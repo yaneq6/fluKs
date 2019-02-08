@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name">Scheme</string>
+    <string name="app_name">fluKs</string>
     <string name="login_title">SignIn</string>
     <string name="login_login_hint">Login</string>
     <string name="login_password_hint">Password</string>

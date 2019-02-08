@@ -6,7 +6,7 @@ apply plugin: 'kotlinx-serialization'
 
 android {
     defaultConfig {
-        applicationId "io.scheme"
+        applicationId "io.fluks"
         versionCode 1
         versionName "1.0"
         testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"

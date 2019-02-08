@@ -26,7 +26,7 @@ class DebugEventsGsonTypeAdapterFactoryTest {
 
     companion object {
         const val STRING_JSON =
-            "{\"actions\":[],\"savedActions\":[{\"type\":\"io.scheme.feature.session.input.SignIn\",\"value\":\"{\\\"login\\\":\\\"login\\\",\\\"password\\\":\\\"password\\\"}\"}]}"
+            "{\"actions\":[],\"savedActions\":[{\"type\":\"io.fluks.feature.session.input.SignIn\",\"value\":\"{\\\"login\\\":\\\"login\\\",\\\"password\\\":\\\"password\\\"}\"}]}"
         val OBJECT_JSON = DebugEvents(
             actions = listOf(),
             savedActions = listOf(

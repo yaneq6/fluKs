@@ -19,6 +19,6 @@ class ExampleInstrumentedTest {
     fun useAppContext() {
         // Context of the app under test.
         val appContext = InstrumentationRegistry.getTargetContext()
-        assertEquals("io.scheme", appContext.packageName)
+        assertEquals("io.fluks", appContext.packageName)
     }
 }
