@@ -4,6 +4,8 @@
     <modules>
       <module fileurl="file://$PROJECT_DIR$/app/app.iml" filepath="$PROJECT_DIR$/app/app.iml" />
       <module fileurl="file://$PROJECT_DIR$/fluKs.iml" filepath="$PROJECT_DIR$/fluKs.iml" />
+      <module fileurl="file://$PROJECT_DIR$/generator/generator.iml" filepath="$PROJECT_DIR$/generator/generator.iml" />
+      <module fileurl="file://$PROJECT_DIR$/scheme/scheme.iml" filepath="$PROJECT_DIR$/scheme/scheme.iml" />
     </modules>
   </component>
 </project>

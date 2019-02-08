@@ -60,3 +60,5 @@ fastlane/readme.md
 
 # modules
 generator/
+scheme/
+scheme.gradle
