@@ -43,10 +43,10 @@ class Dispatcher(
     val error = middlewares.merge { output.filter { record -> record.hasError } }
 
     private val disposable = CompositeDisposable(
-        input.filter { it.event !is Event.Success }.subscribe { record ->
+        input.subscribe { record ->
             logDispatch(record)
         },
-        output.filter { it.event is Event.Success }.subscribe { record ->
+        output.subscribe { record ->
             dispatchRecord(record)
             logSuccess(record)
         }
