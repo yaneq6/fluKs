@@ -53,7 +53,7 @@ class App : Application(), Depends<App.Component> {
     ) :
         Component,
         Domain.Component by Domain.Module(data),
-        Debug.Component by Debug.Module(data = data) {
+        Debug.Component by Debug.Module(data) {
 
         override val appModel by provide(singleton()) {
             AppModel(

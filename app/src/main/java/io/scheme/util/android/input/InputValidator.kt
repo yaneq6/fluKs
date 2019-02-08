@@ -7,19 +7,11 @@ class InputValidator(
     private vararg val inputs: InputObservable
 ) {
 
-    private val disposables = CompositeDisposable()
-
-    init {
-        inputs.forEach { it.bind() }
-    }
-
-    private fun InputObservable.bind() = disposables.addAll(
-        focus.observable().filter(Boolean::not).subscribe {
-            validate(this)
-        }
-    )
-
-    val allValid get() = inputs.all(InputObservable::isValid)
+    private val disposable = CompositeDisposable(inputs.map { input ->
+        input.focus.observable()
+            .filter(Boolean::not)
+            .subscribe { validate(input) }
+    })
 
     fun validate(input: InputObservable? = null) = inputs
         .takeWhile { it !== input }
@@ -27,5 +19,7 @@ class InputValidator(
         .mapNotNull { it.apply { validate() }.error.value }
         .all(String::isBlank)
 
-    fun dispose() = disposables.dispose()
+    val allValid get() = inputs.all(InputObservable::isValid)
+
+    fun dispose() = disposable.dispose()
 }
