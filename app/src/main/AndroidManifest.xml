@@ -2,7 +2,7 @@
 <manifest
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
-    package="io.scheme">
+    package="io.fluks">
 
     <application
         android:icon="@mipmap/ic_launcher"
@@ -10,9 +10,9 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme"
-        android:name=".App"
+        android:name="io.fluks.App"
         tools:ignore="AllowBackup,GoogleAppIndexingWarning">
-        <activity android:name=".feature.StartActivity">
+        <activity android:name="io.fluks.feature.StartActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN"/>
 
@@ -20,9 +20,9 @@
             </intent-filter>
         </activity>
         <activity
-            android:name=".feature.login.view.LoginActivity"
+            android:name="io.fluks.feature.login.view.LoginActivity"
             android:label="Login" />
-        <activity android:name=".feature.scheme.view.SchemeActivity" />
+        <activity android:name="io.fluks.feature.scheme.view.SchemeActivity" />
     </application>
 
 </manifest>

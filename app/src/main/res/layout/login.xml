@@ -9,11 +9,11 @@
 
         <variable
             name="state"
-            type="io.scheme.feature.session.Session.State" />
+            type="io.fluks.feature.session.Session.State" />
 
         <variable
             name="model"
-            type="io.scheme.feature.login.view.LoginViewModel" />
+            type="io.fluks.feature.login.view.LoginViewModel" />
     </data>
 
     <LinearLayout

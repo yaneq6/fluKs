@@ -5,11 +5,11 @@
     <data >
         <variable
             name="state"
-            type="io.scheme.feature.scheme.Scheme.State" />
+            type="io.fluks.feature.scheme.Scheme.State" />
 
         <variable
             name="model"
-            type="io.scheme.feature.scheme.view.SchemeViewModel" />
+            type="io.fluks.feature.scheme.view.SchemeViewModel" />
     </data>
 
     <android.support.constraint.ConstraintLayout
