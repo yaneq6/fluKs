@@ -5,7 +5,7 @@ package io.scheme.util.core
 import io.reactivex.Observable
 import io.reactivex.disposables.Disposable
 import io.reactivex.subjects.PublishSubject
-import java.lang.ref.WeakReference
+import io.scheme.util.core.util.WeakProvider
 
 interface Middleware<A : Event> : Disposable {
 
@@ -20,7 +20,7 @@ interface Middleware<A : Event> : Disposable {
     */
     data class Record<out E : Event>(
         val event: E,
-        val context: WeakReference<Any>,
+        val context: WeakProvider<Any>,
         val timestamp: Long = timestamp(),
         val predecessors: List<Pair<Event, Long>> = emptyList()
     ) {

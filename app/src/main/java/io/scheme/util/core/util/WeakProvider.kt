@@ -4,9 +4,9 @@ import java.lang.ref.WeakReference
 
 class WeakProvider<T>(
     reference: T
-) : () -> T? {
-    override fun invoke(): T? = weakReference.get()
-    private val weakReference = WeakReference(reference)
+) : WeakReference<T>(reference), () -> T? {
+    override fun invoke(): T? = get()
+    override fun toString() = "Weak(${get()})"
 }
 
-fun <T : Any> T.weakProvider() = WeakProvider(this)
+fun <T> T.weak() = WeakProvider(this)

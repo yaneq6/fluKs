@@ -12,6 +12,7 @@ import io.scheme.Debug
 import io.scheme.R
 import io.scheme.util.android.databinding.DataBindingDelegate
 import io.scheme.util.core.*
+import io.scheme.util.core.util.weak
 import io.scheme.util.di.Depends
 import io.scheme.util.di.di
 import io.scheme.util.di.lazyDi
@@ -75,6 +76,6 @@ abstract class BaseActivity<
     }
 
     fun dispatch(getEffect: (WeakReference<Context>) -> Effect) = dispatch(
-        getEffect(WeakReference(this@BaseActivity))
+        getEffect(this@BaseActivity.weak())
     )
 }

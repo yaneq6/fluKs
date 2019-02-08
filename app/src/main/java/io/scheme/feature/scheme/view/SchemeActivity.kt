@@ -9,7 +9,7 @@ import io.scheme.util.android.BaseActivity
 import io.scheme.util.di.createDi
 import io.scheme.util.di.dependencies
 import io.scheme.util.di.lazyDi
-import io.scheme.util.core.util.weakProvider
+import io.scheme.util.core.util.weak
 import io.scheme.databinding.SchemeBinding
 import io.scheme.feature.scheme.Scheme
 import kotlinx.android.synthetic.main.scheme.*
@@ -24,7 +24,7 @@ class SchemeActivity :
     override val component: SchemeUI.Component by createDi {
         SchemeUI.Module(
             app = application.dependencies(),
-            getContext = weakProvider()
+            getContext = weak()
         )
     }
 

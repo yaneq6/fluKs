@@ -5,13 +5,13 @@ import android.content.SharedPreferences
 import io.reactivex.Scheduler
 import io.reactivex.android.schedulers.AndroidSchedulers
 import io.reactivex.schedulers.Schedulers
+import io.scheme.feature.session.action.SignIn
+import io.scheme.feature.session.action.SignOut
+import io.scheme.util.core.*
+import io.scheme.util.core.util.weak
 import io.scheme.util.di.DependenciesAccumulator
 import io.scheme.util.di.provide
 import io.scheme.util.di.provider.singleton
-import io.scheme.util.core.*
-import io.scheme.feature.session.action.SignIn
-import io.scheme.feature.session.action.SignOut
-import java.lang.ref.WeakReference
 
 object Core {
 
@@ -55,7 +55,7 @@ object Core {
         }
 
         override val platformStore by provide(singleton()) {
-            Store(SimpleStateHolder(Platform.State(WeakReference(context))))
+            Store(SimpleStateHolder(Platform.State(context.weak())))
         }
     }
 }

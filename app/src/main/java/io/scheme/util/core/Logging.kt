@@ -6,7 +6,6 @@ import io.scheme.BuildConfig
 import io.scheme.util.core.util.innerName
 import timber.log.Timber
 import java.util.concurrent.atomic.AtomicReference
-import kotlin.reflect.KClass
 import kotlin.system.measureTimeMillis
 
 
@@ -58,9 +57,9 @@ fun Any.logDispatch(record: Middleware.Record<Event>) = tag {
 
 fun Any.logSuccess(record: Middleware.Record<Event>) = tag {
     record.takeIf { it.event is Event.Success }?.run {
-        Timber.d("successful in: ${timestamp - predecessors.last().second}\n ${predecessors
+        Timber.d("successful in: ${timestamp - predecessors.last().second}ms\n ${predecessors
             .takeUnless { it.isEmpty() }
-            ?.map { it::class.innerName }
+            ?.map { it.first::class.innerName}
             ?.reduce { acc, s -> "$acc -> $s" }
         }")
     }

@@ -4,7 +4,7 @@ import io.reactivex.disposables.CompositeDisposable
 import io.reactivex.disposables.Disposable
 import io.scheme.util.core.util.merge
 import io.scheme.util.core.util.unsafe
-import java.lang.ref.WeakReference
+import io.scheme.util.core.util.weak
 
 interface Dispatch<in T : Any> {
     infix fun Any.dispatch(any: T?)
@@ -54,14 +54,12 @@ class Dispatcher(
 
     override fun Any.dispatch(any: Event?) = any?.let { event ->
         dispatchRecord(Middleware.Record(
-            context = WeakDecorator(this),
+            context = weak(),
             event = event
         ))
     } ?: logNullEvent()
 
-    private class WeakDecorator<T>(referent: T) : WeakReference<T>(referent) {
-        override fun toString() = "Weak(${get()})"
-    }
+
 
 
     private fun dispatchRecord(record: Middleware.Record<Event>) {
@@ -81,3 +79,4 @@ class Dispatcher(
         val dispatcher: Dispatcher
     }
 }
+
