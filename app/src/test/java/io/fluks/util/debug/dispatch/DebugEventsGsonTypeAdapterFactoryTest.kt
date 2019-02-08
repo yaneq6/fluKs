@@ -1,15 +1,13 @@
-package io.scheme.util.debug
+package io.fluks.util.debug.dispatch
 
 import com.google.gson.GsonBuilder
-import io.scheme.util.debug.dispatch.DebugEvents
-import io.scheme.feature.session.action.SignIn
-import org.junit.Assert
+import io.fluks.feature.session.action.SignIn
+import org.junit.Assert.assertEquals
 import org.junit.Test
 
-class ActionAdapterFactoryTest {
-
+class DebugEventsGsonTypeAdapterFactoryTest {
     val gson = GsonBuilder()
-        .registerTypeAdapterFactory(ActionTypAdapter.Factory)
+        .registerTypeAdapterFactory(DebugEvents.GsonTypeAdapter.Factory)
         .create()
 
     @Test
@@ -40,6 +38,3 @@ class ActionAdapterFactoryTest {
         )
     }
 }
-
-
-fun assertEquals(expected: Any?, actual: Any?) = Assert.assertEquals(expected, actual)
