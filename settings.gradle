@@ -1,8 +1,1 @@
 include ':app'
-//include ':generator'
-include ':serial:core'
-include ':serial:core:test'
-include ':serial:jackson'
-include ':serial:gson'
-include ':cache:core'
-include ':cache:shared-preferences'
