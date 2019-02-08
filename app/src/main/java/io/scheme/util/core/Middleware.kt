@@ -1,3 +1,5 @@
+@file:Suppress("MemberVisibilityCanBePrivate")
+
 package io.scheme.util.core
 
 import io.reactivex.Observable
@@ -12,21 +14,28 @@ interface Middleware<A : Event> : Disposable {
 
     operator fun invoke(event: Record<A>)
 
+    /*
+    TODO Add custom toString implementation for better logging
+    TODO Add abstraction over [event to timestamp] pair
+    */
     data class Record<out E : Event>(
         val event: E,
         val context: WeakReference<Any>,
-        val predecessors: List<Event> = emptyList()
+        val timestamp: Long = timestamp(),
+        val predecessors: List<Pair<Event, Long>> = emptyList()
     ) {
         operator fun <E : Event> plus(event: E) = Record(
             context = context,
             event = event,
-            predecessors = listOf(this.event) + predecessors
+            timestamp = timestamp(),
+            predecessors = listOf(this.event to timestamp) + predecessors
         )
 
-        fun <E: Event> copy(event: E) = Record(
+        fun <E : Event> copy(event: E) = Record(
             context = context,
             event = event,
-            predecessors = listOf(this.event) + predecessors
+            timestamp = timestamp(),
+            predecessors = predecessors
         )
 
         val error: Throwable? get() = (event as? Event.Error)?.throwable

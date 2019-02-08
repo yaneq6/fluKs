@@ -58,7 +58,7 @@ fun Any.logDispatch(record: Middleware.Record<Event>) = tag {
 
 fun Any.logSuccess(record: Middleware.Record<Event>) = tag {
     record.takeIf { it.event is Event.Success }?.run {
-        Timber.d("successful: ${event::class.innerName} \n after: ${predecessors
+        Timber.d("successful in: ${timestamp - predecessors.last().second}\n ${predecessors
             .takeUnless { it.isEmpty() }
             ?.map { it::class.innerName }
             ?.reduce { acc, s -> "$acc -> $s" }
@@ -69,3 +69,5 @@ fun Any.logSuccess(record: Middleware.Record<Event>) = tag {
 fun Any.logNullEvent() = tag {
     Timber.d("trying dispatch null action")
 }
+
+fun timestamp() = System.currentTimeMillis()

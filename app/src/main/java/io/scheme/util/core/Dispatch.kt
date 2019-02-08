@@ -2,8 +2,6 @@ package io.scheme.util.core
 
 import io.reactivex.disposables.CompositeDisposable
 import io.reactivex.disposables.Disposable
-import io.scheme.util.core.middleware.Controller
-import io.scheme.util.core.middleware.Splitter
 import io.scheme.util.core.util.merge
 import io.scheme.util.core.util.unsafe
 import java.lang.ref.WeakReference
@@ -45,10 +43,10 @@ class Dispatcher(
     val error = middlewares.merge { output.filter { record -> record.hasError } }
 
     private val disposable = CompositeDisposable(
-        input.subscribe { record ->
+        input.filter { it.event !is Event.Success }.subscribe { record ->
             logDispatch(record)
         },
-        output.subscribe { record ->
+        output.filter { it.event is Event.Success }.subscribe { record ->
             dispatchRecord(record)
             logSuccess(record)
         }
@@ -67,15 +65,13 @@ class Dispatcher(
 
 
     private fun dispatchRecord(record: Middleware.Record<Event>) {
-        record.context.get()?.measureDispatch(record) {
-            when (record.event) {
-                is Action.Async -> async
-                is Action.Navigate<*> -> navigator
-                is Effect -> stores
-                is Event.More -> splitter ?: throw IllegalArgumentException("Event.More cannot by handled without Splitter")
-                else -> null
-            }?.invoke(record.unsafe())
-        }
+        when (record.event) {
+            is Action.Async -> async
+            is Action.Navigate<*> -> navigator
+            is Effect -> stores
+            is Event.More -> splitter ?: throw IllegalArgumentException("Event.More cannot by handled without Splitter")
+            else -> null
+        }?.invoke(record.unsafe())
     }
 
     override fun isDisposed() = disposable.isDisposed
