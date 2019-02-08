@@ -1,0 +1,127 @@
+// Top-level build file where you can add configuration options common to all sub-projects/modules.
+
+buildscript {
+    ext {
+        min_sdk_version = 22
+        target_sdk_version = 28
+        gradle_version = '3.3.1'
+        kotlin_version = '1.3.20'
+        junit_version = '4.12'
+        hamcrest_version = '1.3'
+        mockk_version = '1.8.4'
+        test_runner_version = '1.0.2'
+        espresso_version = '3.0.2'
+        kakao_version = '1.3.0'
+        dagger_version = '2.16'
+        android_support = '27.1.1'
+        rxjava_version = '2.1.6'
+        rxandroid_version = '2.0.1'
+        rxkotlin_version = '2.1.0'
+        rxBinding_version = '2.1.1'
+        jackson_kotlin_version = '2.9.6'
+        gson_version = '2.8.5'
+
+        dep = [
+                kotlin         : [
+                        "org.jetbrains.kotlin:kotlin-stdlib:$kotlin_version",
+                        "org.jetbrains.kotlin:kotlin-reflect:$kotlin_version",
+                        "org.jetbrains.kotlinx:kotlinx-serialization-runtime:0.10.0"
+                ],
+                test           : [
+                        "junit:junit:$junit_version",
+                        "org.hamcrest:hamcrest-library:$hamcrest_version",
+                        "io.mockk:mockk:$mockk_version",
+                ],
+                androidTest    : [
+                        "com.android.support.test:runner:$test_runner_version",
+                        "com.android.support.test.espresso:espresso-core:$espresso_version",
+                        "com.android.support.test.espresso:espresso-intents:$espresso_version",
+                        "com.agoda.kakao:kakao:$kakao_version",
+                ],
+                dagger         : [
+                        "com.google.dagger:dagger-android:$dagger_version",
+                        "com.google.dagger:dagger-android-support:$dagger_version",
+                ],
+                daggerProcessor: [
+                        "com.google.dagger:dagger-compiler:$dagger_version",
+                        "com.google.dagger:dagger-android-processor:$dagger_version"
+                ],
+                androidBase    : [
+                        "com.android.support:support-v4:$android_support",
+                        "com.android.support:appcompat-v7:$android_support",
+                ],
+                rxJava         : [
+                        "io.reactivex.rxjava2:rxjava:$rxjava_version",
+                        "io.reactivex.rxjava2:rxkotlin:$rxkotlin_version",
+                ],
+                rxAndroid      : "io.reactivex.rxjava2:rxandroid:$rxandroid_version",
+                rxBindings     : [
+                        "com.jakewharton.rxbinding2:rxbinding-kotlin:$rxBinding_version",
+                        "com.jakewharton.rxbinding2:rxbinding-support-v4-kotlin:$rxBinding_version",
+                        "com.jakewharton.rxbinding2:rxbinding-appcompat-v7-kotlin:$rxBinding_version",
+                        "com.jakewharton.rxbinding2:rxbinding-design-kotlin:$rxBinding_version",
+                        "com.jakewharton.rxbinding2:rxbinding-recyclerview-v7-kotlin:$rxBinding_version"
+                ],
+                jackson        : "com.fasterxml.jackson.module:jackson-module-kotlin:$jackson_kotlin_version",
+                gson           : "com.google.code.gson:gson:$gson_version",
+
+
+        ]
+        excludeMeta = [
+                'META-INF/core.kotlin_module',
+                'META-INF/kodein.kotlin_module',
+                'META-INF/kodein_debug.kotlin_module',
+                'META-INF/kodein_release.kotlin_module',
+                'META-INF/rx.kotlin_module',
+                'META-INF/main.kotlin_module',
+                'META-INF/fuel.kotlin_module',
+                'META-INF/standard.kotlin_module'
+        ]
+    }
+    repositories {
+        google()
+        jcenter()
+    }
+    dependencies {
+        classpath "com.android.tools.build:gradle:$gradle_version"
+        classpath "org.jetbrains.kotlin:kotlin-gradle-plugin:$kotlin_version"
+        classpath "org.jetbrains.kotlin:kotlin-serialization:$kotlin_version"
+
+        // NOTE: Do not place your application dependencies here; they belong
+        // in the individual module build.gradle files
+    }
+}
+
+allprojects {
+    repositories {
+        google()
+        jcenter()
+        maven { url "https://kotlin.bintray.com/kotlinx" }
+    }
+}
+
+subprojects {
+    afterEvaluate { project ->
+        if (project.hasProperty("android")) {
+            android {
+                compileSdkVersion target_sdk_version
+                defaultConfig {
+                    minSdkVersion min_sdk_version
+                    targetSdkVersion target_sdk_version
+                    testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
+                }
+                packagingOptions {
+                    exclude "META-INF/DEPENDENCIES"
+                    exclude "META-INF/NOTICE"
+                    exclude "META-INF/LICENSE"
+                    exclude "META-INF/LICENSE.txt"
+                    exclude "META-INF/NOTICE.txt"
+                }
+            }
+        }
+    }
+}
+
+task clean(type: Delete) {
+    delete rootProject.buildDir
+}

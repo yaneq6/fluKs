@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    tools:context=".feature.login.view.LoginActivity">
+
+    <data>
+
+        <variable
+            name="state"
+            type="io.scheme.feature.session.Session.State" />
+
+        <variable
+            name="model"
+            type="io.scheme.feature.login.view.LoginViewModel" />
+    </data>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical">
+
+        <include layout="@layout/default_toolbar" />
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical"
+            android:padding="16dp">
+
+            <EditText
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="16dp"
+                android:hint="@string/login_login_hint"
+                android:text="@={model.login.text}"
+                app:error="@{model.login.error}"
+                app:focus="@={model.login.focus}" />
+
+            <EditText
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="16dp"
+                android:hint="@string/login_password_hint"
+                android:text="@={model.password.text}"
+                app:error="@{model.password.error}"
+                app:focus="@={model.password.focus}" />
+
+            <View
+                android:layout_width="0dp"
+                android:layout_height="0dp"
+                android:layout_weight="1" />
+
+            <Button
+                style="@style/Base.Widget.AppCompat.Button.Colored"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:onClick="@{() -> model.signIn()}"
+                android:text="Login" />
+        </LinearLayout>
+
+    </LinearLayout>
+</layout>

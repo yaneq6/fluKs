@@ -1,0 +1,62 @@
+package io.scheme.feature.scheme.view
+
+import android.os.Bundle
+import android.view.Menu
+import android.view.MenuInflater
+import android.view.MenuItem
+import io.scheme.R
+import io.scheme.util.android.BaseActivity
+import io.scheme.util.di.createDi
+import io.scheme.util.di.dependencies
+import io.scheme.util.di.lazyDi
+import io.scheme.util.core.util.weakProvider
+import io.scheme.databinding.SchemeBinding
+import io.scheme.feature.scheme.Scheme
+import kotlinx.android.synthetic.main.scheme.*
+
+class SchemeActivity :
+    BaseActivity<
+        SchemeBinding,
+        SchemeViewModel,
+        Scheme.State,
+        SchemeUI.Component>() {
+
+    override val component: SchemeUI.Component by createDi {
+        SchemeUI.Module(
+            app = application.dependencies(),
+            getContext = weakProvider()
+        )
+    }
+
+    private val disposable by lazyDi {
+        gestureObservable.onScale.subscribe { detector ->
+            plan.apply {
+                scaleX *= detector.scaleFactor
+                scaleY *= detector.scaleFactor
+            }
+        }
+    }
+
+    override fun onCreateSafe(savedInstanceState: Bundle?) {
+        setSupportActionBar(toolbar)
+        disposable
+        binding.root.setOnTouchListener(component.touchListener)
+    }
+
+    override fun onCreateOptionsMenu(menu: Menu): Boolean = true.also {
+        MenuInflater(this).inflate(R.menu.scheme, menu)
+    }
+
+    override fun onOptionsItemSelected(item: MenuItem): Boolean = component.viewModel.run {
+        when (item.itemId) {
+            R.id.logout -> logout()
+            else -> null
+        } != null
+    }
+
+    override fun onDestroy() {
+        disposable.dispose()
+        binding.root.setOnTouchListener(null)
+        super.onDestroy()
+    }
+}
