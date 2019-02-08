@@ -10,7 +10,7 @@
         style="@style/Widget.DebugDrawer.Base.Header"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Store"/>
+        android:text="Dependencies"/>
 
     <LinearLayout
         android:id="@+id/itemsLayout"

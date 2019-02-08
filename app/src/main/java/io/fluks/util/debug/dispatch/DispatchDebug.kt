@@ -13,7 +13,7 @@ import io.fluks.util.di.di
 import io.fluks.util.di.lazyDi
 import io.fluks.util.core.*
 import kotlinx.android.extensions.LayoutContainer
-import kotlinx.android.synthetic.main.debug_middleware.*
+import kotlinx.android.synthetic.main.debug_dispatch.*
 
 class DispatchDebug :
     DebugModuleAdapter(),
@@ -34,7 +34,7 @@ class DispatchDebug :
     private val actionsStore get() = di { debugEventsStore }
 
     override fun onCreateView(inflater: LayoutInflater, parent: ViewGroup): View = inflater
-        .inflate(R.layout.debug_middleware, parent, false)
+        .inflate(R.layout.debug_dispatch, parent, false)
         .also { containerView = it }
 
     override fun onOpened() = actionsStore.state.actions.forEach { action ->
