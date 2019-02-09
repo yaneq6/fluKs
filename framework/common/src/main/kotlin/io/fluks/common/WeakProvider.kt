@@ -1,4 +1,4 @@
-package io.fluks.core
+package io.fluks.common
 
 import java.lang.ref.WeakReference
 

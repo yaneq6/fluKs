@@ -11,12 +11,13 @@ import android.widget.ProgressBar
 import io.fluks.Debug
 import io.fluks.R
 import io.fluks.common.measure
+import io.fluks.common.weak
 import io.fluks.core.*
 import io.fluks.util.android.databinding.DataBindingDelegate
 import io.fluks.core.android.middleware.Finishable
-import io.fluks.util.di.Depends
-import io.fluks.util.di.di
-import io.fluks.util.di.lazyDi
+import io.fluks.di.Depends
+import io.fluks.di.android.di
+import io.fluks.di.android.lazyDi
 import timber.log.Timber
 import java.lang.ref.WeakReference
 

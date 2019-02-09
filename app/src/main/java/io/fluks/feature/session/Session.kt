@@ -6,8 +6,8 @@ import io.fluks.core.Reduce
 import io.fluks.core.SimpleStateHolder
 import io.fluks.core.Store
 import io.fluks.core.android.sharedPrefsRepository
-import io.fluks.util.di.provide
-import io.fluks.util.di.provider.singleton
+import io.fluks.di.provide
+import io.fluks.di.provider.singleton
 import io.fluks.feature.session.action.SignIn
 import io.fluks.feature.session.action.SignOut
 

@@ -10,10 +10,10 @@ import io.fluks.core.DispatchDelegate
 import io.fluks.core.Dispatcher
 import io.fluks.core.Event
 import io.fluks.util.android.applicationContext
-import io.fluks.util.di.Depends
-import io.fluks.util.di.dependencies
-import io.fluks.util.di.di
-import io.fluks.util.di.lazyDi
+import io.fluks.di.Depends
+import io.fluks.di.android.dependencies
+import io.fluks.di.android.di
+import io.fluks.di.android.lazyDi
 import io.palaima.debugdrawer.base.DebugModuleAdapter
 import kotlinx.android.extensions.LayoutContainer
 import kotlinx.android.synthetic.main.debug_dispatch.*

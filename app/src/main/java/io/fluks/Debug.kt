@@ -16,10 +16,10 @@ import io.reactivex.schedulers.Schedulers
 import io.fluks.util.debug.dispatch.DebugEvents
 import io.fluks.util.debug.dispatch.DispatchDebug
 import io.fluks.util.debug.dependency.DependenciesDebug
-import io.fluks.util.di.create
-import io.fluks.util.di.factory.multiton
-import io.fluks.util.di.provide
-import io.fluks.util.di.provider.singleton
+import io.fluks.di.create
+import io.fluks.di.factory.multiton
+import io.fluks.di.provide
+import io.fluks.di.provider.singleton
 
 object Debug {
 

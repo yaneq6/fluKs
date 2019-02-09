@@ -1,6 +1,6 @@
-package io.fluks.util.di.provider
+package io.fluks.di.provider
 
-import io.fluks.util.di.Provider
+import io.fluks.di.Provider
 
 class Singleton<T : Any>(
     override val name: String

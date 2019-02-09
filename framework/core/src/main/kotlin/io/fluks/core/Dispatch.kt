@@ -3,6 +3,7 @@
 package io.fluks.core
 
 import io.fluks.common.unsafe
+import io.fluks.common.weak
 import io.reactivex.disposables.CompositeDisposable
 import io.reactivex.disposables.Disposable
 

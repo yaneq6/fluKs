@@ -9,15 +9,6 @@ internal fun <State : Any> StateHolder.Repository<State>.measureRead(): State? =
 internal fun <State : Any> StateHolder.Repository<State>.measureWrite(state: State?) =
     measure("write $name") { this.state = state }
 
-
-fun <T : Any, R> T.measureCreate(name: String = "", block: () -> R): R =
-    measure("create $name", block)
-
-internal fun <T : Any, R> T.measureDispatch(any: Any, block: () -> R): R =
-    measure("dispatch $any", block)
-
-
-
 fun Any.logDispatch(record: Middleware.Record<Event>) = tag {
     record.takeIf { it.event !is Event.Success }?.run {
         log(

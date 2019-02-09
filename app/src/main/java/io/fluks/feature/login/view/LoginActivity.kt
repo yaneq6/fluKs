@@ -2,8 +2,8 @@ package io.fluks.feature.login.view
 
 import android.os.Bundle
 import io.fluks.util.android.BaseActivity
-import io.fluks.util.di.createDi
-import io.fluks.util.di.dependencies
+import io.fluks.di.android.createDi
+import io.fluks.di.android.dependencies
 import io.fluks.databinding.LoginBinding
 import io.fluks.feature.session.Session
 

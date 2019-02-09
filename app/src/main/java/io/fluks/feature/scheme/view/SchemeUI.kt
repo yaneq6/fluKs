@@ -7,9 +7,9 @@ import io.fluks.Debug
 import io.fluks.R
 import io.fluks.util.android.GetContext
 import io.fluks.core.Platform
-import io.fluks.util.di.provide
-import io.fluks.util.di.provider.singleton
-import io.fluks.util.di.provider.weakSingleton
+import io.fluks.di.provide
+import io.fluks.di.provider.singleton
+import io.fluks.di.provider.weakSingleton
 import io.fluks.databinding.SchemeBinding
 import io.fluks.feature.scheme.Scheme
 import io.fluks.feature.scheme.view.gesture.CompoundGestureListener

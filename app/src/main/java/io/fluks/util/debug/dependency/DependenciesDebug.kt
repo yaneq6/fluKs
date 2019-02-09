@@ -5,9 +5,9 @@ import android.view.View
 import android.view.ViewGroup
 import io.palaima.debugdrawer.base.DebugModuleAdapter
 import io.fluks.R
-import io.fluks.util.di.DependenciesAccumulator
-import io.fluks.util.di.Snapshot
-import io.fluks.util.di.hasDependency
+import io.fluks.di.DependenciesAccumulator
+import io.fluks.di.Snapshot
+import io.fluks.di.hasDependency
 import kotlinx.android.extensions.LayoutContainer
 import kotlinx.android.synthetic.main.debug_dependencies.*
 import kotlin.reflect.KClass

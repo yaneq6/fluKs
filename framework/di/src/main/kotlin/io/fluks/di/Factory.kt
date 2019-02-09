@@ -1,4 +1,4 @@
-package io.fluks.util.di
+package io.fluks.di
 
 import kotlin.properties.ReadOnlyProperty
 import kotlin.reflect.KProperty

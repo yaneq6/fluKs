@@ -1,7 +1,7 @@
-package io.fluks.util.di.provider
+package io.fluks.di.provider
 
-import io.fluks.core.weak
-import io.fluks.util.di.Provider
+import io.fluks.common.weak
+import io.fluks.di.Provider
 import java.lang.ref.WeakReference
 
 class WeakSingleton<T : Any>(

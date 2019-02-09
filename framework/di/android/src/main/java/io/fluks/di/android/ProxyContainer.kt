@@ -1,14 +1,11 @@
-package io.fluks.util.di
+package io.fluks.di.android
 
 import android.support.v4.app.Fragment
 import android.support.v4.app.FragmentActivity
 import io.fluks.common.up
-import io.fluks.core.measureCreate
+import io.fluks.di.Depends
+import io.fluks.di.measureCreate
 import kotlin.reflect.KClass
-
-interface Depends<D> {
-    val component: D
-}
 
 interface ProxyContainer<D : Any> : Depends<D> {
     fun createDependencies(): D
@@ -19,7 +16,9 @@ interface ProxyContainer<D : Any> : Depends<D> {
 
 private fun <D : Any> ProxyContainer<D>.createDependenciesFragment() = DependenciesFragment<D>().apply {
     component = createDependencies()
-    activity().supportFragmentManager.beginTransaction().add(this, DependenciesFragment.TAG).commit()
+    activity().supportFragmentManager.beginTransaction().add(this,
+        DependenciesFragment.TAG
+    ).commit()
 }
 
 

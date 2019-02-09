@@ -7,11 +7,11 @@ import io.fluks.common.FluksLog
 import io.fluks.common.android.FluksLogTimber
 import io.fluks.common.measure
 import io.fluks.core.Platform
-import io.fluks.util.di.Dependencies
-import io.fluks.util.di.Depends
-import io.fluks.util.di.createDi
-import io.fluks.util.di.provide
-import io.fluks.util.di.provider.singleton
+import io.fluks.di.Dependencies
+import io.fluks.di.Depends
+import io.fluks.di.android.createDi
+import io.fluks.di.provide
+import io.fluks.di.provider.singleton
 import io.palaima.debugdrawer.timber.data.LumberYard
 import timber.log.Timber
 

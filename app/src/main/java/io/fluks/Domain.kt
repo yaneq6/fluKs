@@ -9,8 +9,8 @@ import io.fluks.core.middleware.Controller
 import io.fluks.core.middleware.Executor
 import io.fluks.core.android.middleware.Navigator
 import io.fluks.core.middleware.Splitter
-import io.fluks.util.di.provide
-import io.fluks.util.di.provider.singleton
+import io.fluks.di.provide
+import io.fluks.di.provider.singleton
 
 object Domain {
 

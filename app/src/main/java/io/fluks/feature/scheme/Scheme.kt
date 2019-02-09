@@ -1,8 +1,8 @@
 package io.fluks.feature.scheme
 
-import io.fluks.util.di.DependenciesAccumulator
-import io.fluks.util.di.provide
-import io.fluks.util.di.provider.weakSingleton
+import io.fluks.di.DependenciesAccumulator
+import io.fluks.di.provide
+import io.fluks.di.provider.weakSingleton
 import io.fluks.core.Reduce
 import io.fluks.core.CoreEffect
 import io.fluks.core.SimpleStateHolder

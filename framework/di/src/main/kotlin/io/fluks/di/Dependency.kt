@@ -1,4 +1,4 @@
-package io.fluks.util.di
+package io.fluks.di
 
 import io.fluks.common.applyWhen
 import java.util.*

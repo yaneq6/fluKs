@@ -1,8 +1,7 @@
 @file:Suppress("ReplaceSingleLineLet")
 
-package io.fluks.util.di
+package io.fluks.di
 
-import io.fluks.core.measureCreate
 import kotlin.properties.ReadOnlyProperty
 import kotlin.reflect.KProperty
 

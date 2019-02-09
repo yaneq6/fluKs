@@ -3,8 +3,8 @@ package io.fluks.feature.login.view
 import io.fluks.App
 import io.fluks.R
 import io.fluks.core.Platform
-import io.fluks.util.di.provide
-import io.fluks.util.di.provider.weakSingleton
+import io.fluks.di.provide
+import io.fluks.di.provider.weakSingleton
 import io.fluks.core.Store
 import io.fluks.databinding.LoginBinding
 import io.fluks.feature.session.Session

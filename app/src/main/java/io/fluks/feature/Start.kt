@@ -3,8 +3,8 @@ package io.fluks.feature
 import io.fluks.App
 import io.fluks.feature.session.Session
 import io.fluks.core.Platform
-import io.fluks.util.di.provide
-import io.fluks.util.di.provider.weakSingleton
+import io.fluks.di.provide
+import io.fluks.di.provider.weakSingleton
 
 object Start {
 

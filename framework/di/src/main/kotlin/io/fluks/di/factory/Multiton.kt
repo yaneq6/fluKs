@@ -1,6 +1,6 @@
-package io.fluks.util.di.factory
+package io.fluks.di.factory
 
-import io.fluks.util.di.Factory
+import io.fluks.di.Factory
 
 class Multiton<A, T: Any>(
     override val name: String,

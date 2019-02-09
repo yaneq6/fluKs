@@ -1,0 +1,9 @@
+apply plugin: 'java-library'
+apply plugin: 'kotlin'
+dependencies {
+    implementation dep.kotlin
+    testImplementation dep.test
+    implementation project(':framework:common')
+}
+sourceCompatibility = "1.8"
+targetCompatibility = "1.8"

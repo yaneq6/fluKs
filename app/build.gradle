@@ -34,6 +34,7 @@ TODO Cleanup this mess below
 dependencies {
     implementation project(":framework:core:android")
     implementation project(":framework:common:android")
+    implementation project(":framework:di:android")
     implementation dep.kotlin
     implementation dep.androidBase
     implementation dep.rxJava

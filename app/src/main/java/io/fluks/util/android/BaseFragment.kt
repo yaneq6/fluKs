@@ -8,8 +8,8 @@ import android.view.View
 import android.view.ViewGroup
 import io.reactivex.disposables.Disposable
 import io.fluks.util.android.databinding.DataBindingDelegate
-import io.fluks.util.di.Depends
-import io.fluks.util.di.di
+import io.fluks.di.Depends
+import io.fluks.di.android.di
 import io.fluks.core.Event
 import io.fluks.core.Platform
 import io.fluks.core.Reduce

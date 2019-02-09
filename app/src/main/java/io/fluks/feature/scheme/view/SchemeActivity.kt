@@ -6,10 +6,10 @@ import android.view.MenuInflater
 import android.view.MenuItem
 import io.fluks.R
 import io.fluks.util.android.BaseActivity
-import io.fluks.util.di.createDi
-import io.fluks.util.di.dependencies
-import io.fluks.util.di.lazyDi
-import io.fluks.core.weak
+import io.fluks.di.android.createDi
+import io.fluks.di.android.dependencies
+import io.fluks.di.android.lazyDi
+import io.fluks.common.weak
 import io.fluks.databinding.SchemeBinding
 import io.fluks.feature.scheme.Scheme
 import kotlinx.android.synthetic.main.scheme.*

@@ -1,6 +1,6 @@
-package io.fluks.util.di.factory
+package io.fluks.di.factory
 
-import io.fluks.util.di.Factory
+import io.fluks.di.Factory
 import java.util.*
 
 class WeakMultiton<A, T : Any>(name: String) :
