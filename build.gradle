@@ -20,6 +20,7 @@ buildscript {
         rxBinding_version = '2.1.1'
         jackson_kotlin_version = '2.9.6'
         gson_version = '2.8.5'
+        timber_version = '4.7.1'
 
         dep = [
                 kotlin         : [
@@ -64,14 +65,11 @@ buildscript {
                 ],
                 jackson        : "com.fasterxml.jackson.module:jackson-module-kotlin:$jackson_kotlin_version",
                 gson           : "com.google.code.gson:gson:$gson_version",
-
-
+                timber         : "com.jakewharton.timber:timber:$timber_version",
         ]
         excludeMeta = [
+                'META-INF/android_debug.kotlin_module',
                 'META-INF/core.kotlin_module',
-                'META-INF/kodein.kotlin_module',
-                'META-INF/kodein_debug.kotlin_module',
-                'META-INF/kodein_release.kotlin_module',
                 'META-INF/rx.kotlin_module',
                 'META-INF/main.kotlin_module',
                 'META-INF/fuel.kotlin_module',
@@ -86,9 +84,6 @@ buildscript {
         classpath "com.android.tools.build:gradle:$gradle_version"
         classpath "org.jetbrains.kotlin:kotlin-gradle-plugin:$kotlin_version"
         classpath "org.jetbrains.kotlin:kotlin-serialization:$kotlin_version"
-
-        // NOTE: Do not place your application dependencies here; they belong
-        // in the individual module build.gradle files
     }
 }
 

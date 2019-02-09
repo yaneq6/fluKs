@@ -1,12 +1,14 @@
 package io.fluks
 
+import io.fluks.core.Dispatcher
+import io.fluks.core.interactor
+import io.fluks.core.store
 import io.fluks.feature.scheme.Scheme
 import io.fluks.feature.session.Session
-import io.fluks.util.core.*
-import io.fluks.util.core.middleware.Controller
-import io.fluks.util.core.middleware.Executor
-import io.fluks.util.core.middleware.Navigator
-import io.fluks.util.core.middleware.Splitter
+import io.fluks.core.middleware.Controller
+import io.fluks.core.middleware.Executor
+import io.fluks.core.android.middleware.Navigator
+import io.fluks.core.middleware.Splitter
 import io.fluks.util.di.provide
 import io.fluks.util.di.provider.singleton
 

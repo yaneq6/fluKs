@@ -3,14 +3,16 @@ package io.fluks
 import android.app.Application
 import android.support.v7.app.AppCompatDelegate
 import com.squareup.leakcanary.LeakCanary
-import io.palaima.debugdrawer.timber.data.LumberYard
-import io.fluks.util.core.Platform
-import io.fluks.util.core.measure
+import io.fluks.common.FluksLog
+import io.fluks.common.android.FluksLogTimber
+import io.fluks.common.measure
+import io.fluks.core.Platform
 import io.fluks.util.di.Dependencies
 import io.fluks.util.di.Depends
 import io.fluks.util.di.createDi
 import io.fluks.util.di.provide
 import io.fluks.util.di.provider.singleton
+import io.palaima.debugdrawer.timber.data.LumberYard
 import timber.log.Timber
 
 class App : Application(), Depends<App.Component> {
@@ -35,6 +37,7 @@ class App : Application(), Depends<App.Component> {
 
     override fun onCreate() {
         super.onCreate()
+        FluksLog.init(FluksLogTimber)
         Timber.d("onCreate")
     }
 
@@ -65,7 +68,7 @@ class App : Application(), Depends<App.Component> {
         init {
             measure("init App.Module") {
                 leakCanary()
-                timber()
+                logging()
                 middleware()
                 model()
                 vectorDrawables()
@@ -76,10 +79,12 @@ class App : Application(), Depends<App.Component> {
             if (!LeakCanary.isInAnalyzerProcess(app)) LeakCanary.install(app)
         }
 
-        private fun timber() = Timber.plant(
-            LumberYard.getInstance(app).apply(LumberYard::cleanUp).tree(),
-            Timber.DebugTree()
-        )
+        private fun logging() {
+            Timber.plant(
+                LumberYard.getInstance(app).apply(LumberYard::cleanUp).tree(),
+                Timber.DebugTree()
+            )
+        }
 
         private fun middleware() {
             debug(dispatcher)
@@ -94,5 +99,4 @@ class App : Application(), Depends<App.Component> {
         }
     }
 }
-
 

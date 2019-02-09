@@ -10,9 +10,9 @@ import io.reactivex.disposables.Disposable
 import io.fluks.util.android.databinding.DataBindingDelegate
 import io.fluks.util.di.Depends
 import io.fluks.util.di.di
-import io.fluks.util.core.Event
-import io.fluks.util.core.Platform
-import io.fluks.util.core.Reduce
+import io.fluks.core.Event
+import io.fluks.core.Platform
+import io.fluks.core.Reduce
 
 abstract class BaseFragment<
     DataBinding : ViewDataBinding,

@@ -1,9 +1,13 @@
 package io.fluks.feature.session
 
 import io.fluks.Core
+import io.fluks.core.CoreEffect
+import io.fluks.core.Reduce
+import io.fluks.core.SimpleStateHolder
+import io.fluks.core.Store
+import io.fluks.core.android.sharedPrefsRepository
 import io.fluks.util.di.provide
 import io.fluks.util.di.provider.singleton
-import io.fluks.util.core.*
 import io.fluks.feature.session.action.SignIn
 import io.fluks.feature.session.action.SignOut
 
@@ -46,13 +50,15 @@ object Session {
         }
 
         override val sessionStore by provide(singleton()) { name ->
-            Store(SimpleStateHolder(
-                state = State(),
-                repository = sharedPrefsRepository(
-                    name = name,
-                    context = context
+            Store(
+                SimpleStateHolder(
+                    state = State(),
+                    repository = sharedPrefsRepository(
+                        name = name,
+                        context = context
+                    )
                 )
-            ))
+            )
         }
     }
 }

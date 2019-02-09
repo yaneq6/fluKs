@@ -2,13 +2,12 @@ package io.fluks
 
 import android.content.Context
 import android.content.SharedPreferences
+import io.fluks.core.*
 import io.reactivex.Scheduler
 import io.reactivex.android.schedulers.AndroidSchedulers
 import io.reactivex.schedulers.Schedulers
 import io.fluks.feature.session.action.SignIn
 import io.fluks.feature.session.action.SignOut
-import io.fluks.util.core.*
-import io.fluks.util.core.util.weak
 import io.fluks.util.di.DependenciesAccumulator
 import io.fluks.util.di.provide
 import io.fluks.util.di.provider.singleton

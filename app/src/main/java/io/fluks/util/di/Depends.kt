@@ -2,8 +2,8 @@ package io.fluks.util.di
 
 import android.support.v4.app.Fragment
 import android.support.v4.app.FragmentActivity
-import io.fluks.util.core.measureCreate
-import io.fluks.util.core.util.up
+import io.fluks.common.up
+import io.fluks.core.measureCreate
 import kotlin.reflect.KClass
 
 interface Depends<D> {

@@ -1,8 +1,10 @@
 package io.fluks.feature.session.action
 
+import io.fluks.core.AbstractInteractor
+import io.fluks.core.Action
+import io.fluks.core.Event
 import io.fluks.feature.scheme.view.NavigateScheme
 import io.fluks.feature.session.Session
-import io.fluks.util.core.*
 
 data class SignIn(
     val login: String,

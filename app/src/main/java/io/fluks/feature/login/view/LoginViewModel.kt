@@ -1,11 +1,11 @@
 package io.fluks.feature.login.view
 
+import io.fluks.core.*
 import io.reactivex.disposables.CompositeDisposable
 import io.reactivex.disposables.Disposable
 import io.fluks.util.android.input.InputObservable
 import io.fluks.util.android.input.InputValidator
 import io.fluks.util.android.value
-import io.fluks.util.core.*
 import io.fluks.feature.session.Session
 import io.fluks.feature.session.action.SignIn
 import io.fluks.feature.scheme.view.SchemeUI as SchemeView

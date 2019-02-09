@@ -9,7 +9,7 @@ import io.fluks.util.android.BaseActivity
 import io.fluks.util.di.createDi
 import io.fluks.util.di.dependencies
 import io.fluks.util.di.lazyDi
-import io.fluks.util.core.util.weak
+import io.fluks.core.weak
 import io.fluks.databinding.SchemeBinding
 import io.fluks.feature.scheme.Scheme
 import kotlinx.android.synthetic.main.scheme.*

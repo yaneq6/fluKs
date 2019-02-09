@@ -3,15 +3,18 @@ package io.fluks.util.debug.dispatch
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import io.palaima.debugdrawer.base.DebugModuleAdapter
 import io.fluks.Debug
 import io.fluks.R
+import io.fluks.core.Dispatch
+import io.fluks.core.DispatchDelegate
+import io.fluks.core.Dispatcher
+import io.fluks.core.Event
 import io.fluks.util.android.applicationContext
 import io.fluks.util.di.Depends
 import io.fluks.util.di.dependencies
 import io.fluks.util.di.di
 import io.fluks.util.di.lazyDi
-import io.fluks.util.core.*
+import io.palaima.debugdrawer.base.DebugModuleAdapter
 import kotlinx.android.extensions.LayoutContainer
 import kotlinx.android.synthetic.main.debug_dispatch.*
 
@@ -40,7 +43,9 @@ class DispatchDebug :
     override fun onOpened() = actionsStore.state.actions.forEach { action ->
         itemsLayout
             .createEventItemView()
-            .setEvent(action) { dispatch(it) }
+            .setEvent(action) {
+                dispatch(it)
+            }
             .let(itemsLayout::addView)
     }
 

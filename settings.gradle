@@ -1,2 +1,7 @@
 include ':app'
-include ':generator' // can be removed safely
+include ':framework:common'
+include ':framework:common:android'
+include ':framework:core'
+include ':framework:core:android'
+include ':generator'
+include ':scheme'

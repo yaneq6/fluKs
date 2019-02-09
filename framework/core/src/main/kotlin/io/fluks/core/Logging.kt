@@ -1,0 +1,52 @@
+package io.fluks.core
+
+import io.fluks.common.*
+
+internal fun <State : Any> StateHolder.Repository<State>.measureRead(): State? =
+    measure("read $name") { state }
+
+
+internal fun <State : Any> StateHolder.Repository<State>.measureWrite(state: State?) =
+    measure("write $name") { this.state = state }
+
+
+fun <T : Any, R> T.measureCreate(name: String = "", block: () -> R): R =
+    measure("create $name", block)
+
+internal fun <T : Any, R> T.measureDispatch(any: Any, block: () -> R): R =
+    measure("dispatch $any", block)
+
+
+
+fun Any.logDispatch(record: Middleware.Record<Event>) = tag {
+    record.takeIf { it.event !is Event.Success }?.run {
+        log(
+            level = Log.DEBUG,
+            message = "dispatch: $event \n after: ${predecessors
+                .takeUnless { it.isEmpty() }
+                ?.map { it::class.simpleName }
+                ?.reduce { acc, s -> "$acc -> $s" }
+            }",
+            tag = this@logDispatch
+        )
+    }
+}
+
+fun Any.logSuccess(record: Middleware.Record<Event>) =
+    record.takeIf { it.event is Event.Success }?.run {
+        log(
+            level = Log.DEBUG,
+            message = "successful in: ${timestamp - predecessors.last().second}ms\n ${predecessors
+                .takeUnless { it.isEmpty() }
+                ?.map { it.first::class.innerName }
+                ?.reduce { acc, s -> "$acc -> $s" }
+            }",
+            tag = this@logSuccess
+        )
+    }
+
+fun Any.logNullEvent() = log(
+    level = Log.DEBUG,
+    message = "trying dispatch null action",
+    tag = this
+)

@@ -2,6 +2,10 @@ package io.fluks
 
 import android.app.Activity
 import android.support.annotation.StyleRes
+import io.fluks.core.Dispatcher
+import io.fluks.core.Platform
+import io.fluks.core.SimpleStateHolder
+import io.fluks.core.Store
 import io.palaima.debugdrawer.DebugDrawer
 import io.palaima.debugdrawer.commons.BuildModule
 import io.palaima.debugdrawer.commons.DeviceModule
@@ -16,7 +20,6 @@ import io.fluks.util.di.create
 import io.fluks.util.di.factory.multiton
 import io.fluks.util.di.provide
 import io.fluks.util.di.provider.singleton
-import io.fluks.util.core.*
 
 object Debug {
 
@@ -33,13 +36,15 @@ object Debug {
         Core.Component by data {
 
         override val debugEventsStore: Store<DebugEvents.Effect, DebugEvents> by provide(singleton()) { name ->
-            Store(SimpleStateHolder(
-                state = DebugEvents(),
-                repository = DebugEvents.Repository(
-                    name = name,
-                    context = context
+            Store(
+                SimpleStateHolder(
+                    state = DebugEvents(),
+                    repository = DebugEvents.Repository(
+                        name = name,
+                        context = context
+                    )
                 )
-            ))
+            )
         }
 
         override fun Activity.initDebugDrawer() = DebugDrawer

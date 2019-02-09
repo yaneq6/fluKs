@@ -6,7 +6,7 @@ import io.fluks.App
 import io.fluks.Debug
 import io.fluks.R
 import io.fluks.util.android.GetContext
-import io.fluks.util.core.Platform
+import io.fluks.core.Platform
 import io.fluks.util.di.provide
 import io.fluks.util.di.provider.singleton
 import io.fluks.util.di.provider.weakSingleton

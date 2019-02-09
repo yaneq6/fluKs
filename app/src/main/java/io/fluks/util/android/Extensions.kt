@@ -12,7 +12,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import io.fluks.util.android.databinding.ObservableProperty
-import io.fluks.util.core.Event
+import io.fluks.core.Event
 import kotlinx.android.extensions.LayoutContainer
 
 val LayoutContainer.context get() = containerView?.context

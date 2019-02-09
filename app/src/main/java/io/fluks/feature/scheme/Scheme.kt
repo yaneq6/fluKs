@@ -3,10 +3,10 @@ package io.fluks.feature.scheme
 import io.fluks.util.di.DependenciesAccumulator
 import io.fluks.util.di.provide
 import io.fluks.util.di.provider.weakSingleton
-import io.fluks.util.core.Reduce
-import io.fluks.util.core.CoreEffect
-import io.fluks.util.core.SimpleStateHolder
-import io.fluks.util.core.Store
+import io.fluks.core.Reduce
+import io.fluks.core.CoreEffect
+import io.fluks.core.SimpleStateHolder
+import io.fluks.core.Store
 
 object Scheme {
 

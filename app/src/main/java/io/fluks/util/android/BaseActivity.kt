@@ -10,9 +10,10 @@ import android.view.View
 import android.widget.ProgressBar
 import io.fluks.Debug
 import io.fluks.R
+import io.fluks.common.measure
+import io.fluks.core.*
 import io.fluks.util.android.databinding.DataBindingDelegate
-import io.fluks.util.core.*
-import io.fluks.util.core.util.weak
+import io.fluks.core.android.middleware.Finishable
 import io.fluks.util.di.Depends
 import io.fluks.util.di.di
 import io.fluks.util.di.lazyDi
@@ -28,7 +29,8 @@ abstract class BaseActivity<
     AppCompatActivity(),
     DataBindingDelegate<DataBinding>,
     Depends<Component>,
-    DispatchDelegate<Event>
+    DispatchDelegate<Event>,
+    Finishable
 
     where DataBinding : ViewDataBinding,
           Component : Dispatcher.Component,

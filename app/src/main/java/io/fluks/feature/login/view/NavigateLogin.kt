@@ -3,7 +3,7 @@ package io.fluks.feature.login.view
 import android.app.Activity
 import android.content.Context
 import android.content.Intent
-import io.fluks.util.core.Action
+import io.fluks.core.Action
 
 data class NavigateLogin(
     override val finishCurrent: Boolean = false

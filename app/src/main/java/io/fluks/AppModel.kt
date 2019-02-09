@@ -1,8 +1,8 @@
 package io.fluks
 
+import io.fluks.core.*
 import io.reactivex.disposables.CompositeDisposable
 import io.reactivex.disposables.Disposable
-import io.fluks.util.core.*
 import io.fluks.feature.login.view.NavigateLogin
 import io.fluks.feature.session.Session
 import io.fluks.feature.session.action.SignOut

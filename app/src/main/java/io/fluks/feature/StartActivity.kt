@@ -2,11 +2,11 @@ package io.fluks.feature
 
 import android.os.Bundle
 import android.support.v7.app.AppCompatActivity
-import io.fluks.util.core.Dispatch
-import io.fluks.util.core.DispatchDelegate
-import io.fluks.util.core.Event
-import io.fluks.util.core.Platform
-import io.fluks.util.core.util.weak
+import io.fluks.core.Dispatch
+import io.fluks.core.DispatchDelegate
+import io.fluks.core.Event
+import io.fluks.core.Platform
+import io.fluks.core.weak
 import io.fluks.util.di.Depends
 import io.fluks.util.di.dependencies
 import io.fluks.util.di.di

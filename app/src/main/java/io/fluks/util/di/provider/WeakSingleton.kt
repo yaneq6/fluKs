@@ -1,6 +1,6 @@
 package io.fluks.util.di.provider
 
-import io.fluks.util.core.util.weak
+import io.fluks.core.weak
 import io.fluks.util.di.Provider
 import java.lang.ref.WeakReference
 

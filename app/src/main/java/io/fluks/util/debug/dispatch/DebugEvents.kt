@@ -8,10 +8,10 @@ import com.google.gson.TypeAdapterFactory
 import com.google.gson.reflect.TypeToken
 import com.google.gson.stream.JsonReader
 import com.google.gson.stream.JsonWriter
-import io.fluks.util.core.Event
-import io.fluks.util.core.Reduce
-import io.fluks.util.core.CoreEffect
-import io.fluks.util.core.StateHolder
+import io.fluks.core.CoreEffect
+import io.fluks.core.Event
+import io.fluks.core.Reduce
+import io.fluks.core.StateHolder
 import timber.log.Timber
 
 data class DebugEvents(

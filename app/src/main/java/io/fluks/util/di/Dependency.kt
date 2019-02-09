@@ -1,6 +1,6 @@
 package io.fluks.util.di
 
-import io.fluks.util.core.util.applyWhen
+import io.fluks.common.applyWhen
 import java.util.*
 import kotlin.reflect.KClass
 

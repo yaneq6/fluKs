@@ -1,0 +1,11 @@
+apply plugin: 'java-library'
+apply plugin: 'kotlin'
+dependencies {
+    implementation dep.kotlin
+    implementation dep.gson
+    testImplementation dep.test
+    api dep.rxJava
+    api project(":framework:common")
+}
+sourceCompatibility = "1.8"
+targetCompatibility = "1.8"

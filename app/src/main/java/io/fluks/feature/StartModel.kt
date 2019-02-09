@@ -1,8 +1,8 @@
 package io.fluks.feature
 
-import io.fluks.util.core.Action
-import io.fluks.util.core.Dispatch
-import io.fluks.util.core.Store
+import io.fluks.core.Action
+import io.fluks.core.Dispatch
+import io.fluks.core.Store
 import io.fluks.feature.login.view.NavigateLogin
 import io.fluks.feature.scheme.view.NavigateScheme
 import io.fluks.feature.session.Session

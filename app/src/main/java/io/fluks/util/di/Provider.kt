@@ -2,7 +2,7 @@
 
 package io.fluks.util.di
 
-import io.fluks.util.core.measureCreate
+import io.fluks.core.measureCreate
 import kotlin.properties.ReadOnlyProperty
 import kotlin.reflect.KProperty
 

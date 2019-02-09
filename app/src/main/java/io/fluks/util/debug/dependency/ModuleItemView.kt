@@ -3,7 +3,7 @@ package io.fluks.util.debug.dependency
 import android.view.ViewGroup
 import io.fluks.R
 import io.fluks.util.android.inflate
-import io.fluks.util.core.util.innerName
+import io.fluks.common.innerName
 import kotlinx.android.synthetic.main.debug_module_item.view.*
 import kotlin.reflect.KClass
 
