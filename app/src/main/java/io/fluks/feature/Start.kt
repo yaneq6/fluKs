@@ -1,10 +1,10 @@
 package io.fluks.feature
 
 import io.fluks.App
+import io.fluks.feature.session.Session
 import io.fluks.util.core.Platform
 import io.fluks.util.di.provide
-import io.fluks.util.di.provider.singleton
-import io.fluks.feature.session.Session
+import io.fluks.util.di.provider.weakSingleton
 
 object Start {
 
@@ -20,7 +20,7 @@ object Start {
         Component,
         App.Component by app {
 
-        override val model: StartModel by provide(singleton()) {
+        override val model: StartModel by provide(weakSingleton()) {
             StartModel(
                 sessionStore = sessionStore,
                 dispatch = dispatcher

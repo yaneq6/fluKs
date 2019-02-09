@@ -1,2 +1,2 @@
 include ':app'
-include ':generator', ':scheme'
+include ':generator' // can be removed safely

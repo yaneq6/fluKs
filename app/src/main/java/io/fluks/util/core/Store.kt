@@ -5,7 +5,6 @@ package io.fluks.util.core
 import io.reactivex.Observable
 import io.reactivex.ObservableSource
 import io.reactivex.subjects.PublishSubject
-import io.fluks.util.di.Dependency
 
 fun <E : Effect, State : Any> Store<E, State>.subscribe(onNext: State.(Effect) -> Unit) =
     observable().subscribe { onNext(it.first, it.second) }!!
@@ -16,13 +15,10 @@ fun <E : Effect, State : Any> Store<E, State>.observable(): Observable<Pair<Stat
 fun <T> ObservableSource<T>.observable() = Observable.unsafeCreate(this)!!
 
 interface Store<E : Effect, State : Any> :
-    Dependency,
     ObservableSource<Pair<State, Effect>> {
 
     val state: State
     val error: Observable<Pair<State, Event.Error>>
-
-    override fun snapshot() = state
 
     operator fun invoke(effect: E)
 
@@ -40,7 +36,7 @@ private class DefaultStore<E : Effect, State : Reduce<E, State>>(
 ) : Store<E, State>,
     ObservableSource<Pair<State, Effect>> by stateHolder {
 
-    override val name: String get() = stateHolder.name
+//    override val name: String get() = stateHolder.name
 
     override val state by stateHolder
 
@@ -48,9 +44,9 @@ private class DefaultStore<E : Effect, State : Reduce<E, State>>(
 
     private val errorSubject = PublishSubject.create<Pair<State, Event.Error>>()
 
-    override fun snapshot() = state
-
-    override fun clear() {}
+//    override fun snapshot() = state
+//
+//    override fun clear() {}
 
     override fun invoke(event: E) {
         state(event)?.let { newState ->
