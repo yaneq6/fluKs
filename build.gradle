@@ -24,31 +24,32 @@ buildscript {
         debug_drawer_version = '0.8.0'
 
         dep = [
-                kotlin            : [
+                kotlin             : [
                         "org.jetbrains.kotlin:kotlin-stdlib:$kotlin_version",
                         "org.jetbrains.kotlin:kotlin-reflect:$kotlin_version",
-                        "org.jetbrains.kotlinx:kotlinx-serialization-runtime:0.10.0"
                 ],
-                test              : [
+                kotlinSerialization: "org.jetbrains.kotlinx:kotlinx-serialization-runtime:0.10.0",
+
+                test               : [
                         "junit:junit:$junit_version",
                         "org.hamcrest:hamcrest-library:$hamcrest_version",
                         "io.mockk:mockk:$mockk_version",
                 ],
-                androidTest       : [
+                androidTest        : [
                         "com.android.support.test:runner:$test_runner_version",
                         "com.android.support.test.espresso:espresso-core:$espresso_version",
                         "com.android.support.test.espresso:espresso-intents:$espresso_version",
                         "com.agoda.kakao:kakao:$kakao_version",
                 ],
-                dagger            : [
+                dagger             : [
                         "com.google.dagger:dagger-android:$dagger_version",
                         "com.google.dagger:dagger-android-support:$dagger_version",
                 ],
-                daggerProcessor   : [
+                daggerProcessor    : [
                         "com.google.dagger:dagger-compiler:$dagger_version",
                         "com.google.dagger:dagger-android-processor:$dagger_version"
                 ],
-                androidBase       : [
+                androidBase        : [
                         "com.android.support:support-v4:$android_support",
                         "com.android.support:appcompat-v7:$android_support",
                         "com.android.support:recyclerview-v7:$android_support",
@@ -56,22 +57,22 @@ buildscript {
 
 
                 ],
-                rxJava            : [
+                rxJava             : [
                         "io.reactivex.rxjava2:rxjava:$rxjava_version",
                         "io.reactivex.rxjava2:rxkotlin:$rxkotlin_version",
                 ],
-                rxAndroid         : "io.reactivex.rxjava2:rxandroid:$rxandroid_version",
-                rxBindings        : [
+                rxAndroid          : "io.reactivex.rxjava2:rxandroid:$rxandroid_version",
+                rxBindings         : [
                         "com.jakewharton.rxbinding2:rxbinding-kotlin:$rxBinding_version",
                         "com.jakewharton.rxbinding2:rxbinding-support-v4-kotlin:$rxBinding_version",
                         "com.jakewharton.rxbinding2:rxbinding-appcompat-v7-kotlin:$rxBinding_version",
                         "com.jakewharton.rxbinding2:rxbinding-design-kotlin:$rxBinding_version",
                         "com.jakewharton.rxbinding2:rxbinding-recyclerview-v7-kotlin:$rxBinding_version"
                 ],
-                jackson           : "com.fasterxml.jackson.module:jackson-module-kotlin:$jackson_kotlin_version",
-                gson              : "com.google.code.gson:gson:$gson_version",
-                timber            : "com.jakewharton.timber:timber:$timber_version",
-                debugDrawer       : [
+                jackson            : "com.fasterxml.jackson.module:jackson-module-kotlin:$jackson_kotlin_version",
+                gson               : "com.google.code.gson:gson:$gson_version",
+                timber             : "com.jakewharton.timber:timber:$timber_version",
+                debugDrawer        : [
                         "io.palaima.debugdrawer:debugdrawer-commons:$debug_drawer_version",
                         "io.palaima.debugdrawer:debugdrawer-actions:$debug_drawer_version",
                         //    "io.palaima.debugdrawer:debugdrawer-scalpel:$debug_drawer_version",
@@ -79,8 +80,8 @@ buildscript {
                         "io.palaima.debugdrawer:debugdrawer-timber:$debug_drawer_version",
                         //    "io.palaima.debugdrawer:debugdrawer-fps:$debug_drawer_version",
                 ],
-                debugDrawerDebug  : "io.palaima.debugdrawer:debugdrawer:$debug_drawer_version",
-                debugDrawerRelease: "io.palaima.debugdrawer:debugdrawer-no-op:$debug_drawer_version",
+                debugDrawerDebug   : "io.palaima.debugdrawer:debugdrawer:$debug_drawer_version",
+                debugDrawerRelease : "io.palaima.debugdrawer:debugdrawer-no-op:$debug_drawer_version",
         ]
         excludeMeta = [
                 'META-INF/android_debug.kotlin_module',
