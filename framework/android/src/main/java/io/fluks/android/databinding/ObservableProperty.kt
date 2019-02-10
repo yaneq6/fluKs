@@ -1,4 +1,4 @@
-package io.fluks.util.android.databinding
+package io.fluks.android.databinding
 
 import android.databinding.Observable.OnPropertyChangedCallback
 import io.reactivex.Observable

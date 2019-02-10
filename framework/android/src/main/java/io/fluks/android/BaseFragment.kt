@@ -1,4 +1,4 @@
-package io.fluks.util.android
+package io.fluks.android
 
 import android.databinding.ViewDataBinding
 import android.os.Bundle
@@ -8,7 +8,7 @@ import android.view.View
 import android.view.ViewGroup
 import io.fluks.common.android.getSerializable
 import io.reactivex.disposables.Disposable
-import io.fluks.util.android.databinding.DataBindingDelegate
+import io.fluks.android.databinding.DataBindingDelegate
 import io.fluks.di.Depends
 import io.fluks.di.android.di
 import io.fluks.core.Event

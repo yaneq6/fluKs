@@ -1,6 +1,5 @@
-package io.fluks.feature
+package io.fluks
 
-import io.fluks.App
 import io.fluks.feature.session.Session
 import io.fluks.core.Platform
 import io.fluks.di.provide

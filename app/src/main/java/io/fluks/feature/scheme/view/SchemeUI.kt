@@ -7,10 +7,10 @@ import io.fluks.Debug
 import io.fluks.R
 import io.fluks.common.android.GetContext
 import io.fluks.core.Platform
+import io.fluks.databinding.SchemeBinding
 import io.fluks.di.provide
 import io.fluks.di.provider.singleton
 import io.fluks.di.provider.weakSingleton
-import io.fluks.databinding.SchemeBinding
 import io.fluks.feature.scheme.Scheme
 import io.fluks.feature.scheme.view.gesture.CompoundGestureListener
 import io.fluks.feature.scheme.view.gesture.GestureLogger

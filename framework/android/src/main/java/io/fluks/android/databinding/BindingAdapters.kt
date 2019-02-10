@@ -1,6 +1,6 @@
 @file:Suppress("EXTENSION_SHADOWED_BY_MEMBER")
 
-package io.fluks.util.android.databinding
+package io.fluks.android.databinding
 
 import android.databinding.BindingAdapter
 import android.databinding.InverseBindingAdapter

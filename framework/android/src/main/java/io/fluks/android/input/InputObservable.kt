@@ -1,7 +1,6 @@
-package io.fluks.util.android.input
+package io.fluks.android.input
 
-import io.fluks.util.android.databinding.ObservableProperty
-import io.fluks.util.android.value
+import io.fluks.android.databinding.ObservableProperty
 
 class InputObservable(
     private val validate: (String) -> String? = { null },
@@ -20,5 +19,10 @@ class InputObservable(
         value = validate(text.value)
         value != null
     }
-
 }
+
+var <T> ObservableProperty<T>.value: T
+    get() = get()
+    set(value) {
+        set(value)
+    }

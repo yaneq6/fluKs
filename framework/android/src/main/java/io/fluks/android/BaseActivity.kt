@@ -1,5 +1,6 @@
-package io.fluks.util.android
+package io.fluks.android
 
+import android.app.Activity
 import android.content.Context
 import android.content.Intent
 import android.databinding.ViewDataBinding
@@ -8,12 +9,10 @@ import android.support.v7.app.AppCompatActivity
 import android.support.v7.widget.Toolbar
 import android.view.View
 import android.widget.ProgressBar
-import io.fluks.Debug
-import io.fluks.R
+import io.fluks.android.databinding.DataBindingDelegate
 import io.fluks.common.measure
 import io.fluks.common.weak
 import io.fluks.core.*
-import io.fluks.util.android.databinding.DataBindingDelegate
 import io.fluks.core.android.middleware.Finishable
 import io.fluks.di.Depends
 import io.fluks.di.android.di
@@ -36,7 +35,7 @@ abstract class BaseActivity<
     where DataBinding : ViewDataBinding,
           Component : Dispatcher.Component,
           Component : Platform.Component<DataBinding, ViewModel, State>,
-          Component : Debug.Component {
+          Component : BaseActivity.Component {
 
     final override val containerView: View? get() = binding.root
     override val dispatch: Dispatch<Event> get() = component.dispatcher
@@ -81,4 +80,9 @@ abstract class BaseActivity<
     fun dispatch(getEffect: (WeakReference<Context>) -> Effect) = dispatch(
         getEffect(this@BaseActivity.weak())
     )
+
+
+    interface Component {
+        fun Activity.initDebugDrawer()
+    }
 }

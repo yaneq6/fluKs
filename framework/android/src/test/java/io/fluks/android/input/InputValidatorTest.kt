@@ -1,8 +1,5 @@
-package io.fluks.util.common
+package io.fluks.android.input
 
-import io.fluks.util.android.input.InputObservable
-import io.fluks.util.android.input.InputValidator
-import io.fluks.util.android.value
 import org.junit.Assert.assertEquals
 import org.junit.Before
 import org.junit.Test

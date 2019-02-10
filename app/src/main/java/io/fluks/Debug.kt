@@ -2,6 +2,7 @@ package io.fluks
 
 import android.app.Activity
 import android.support.annotation.StyleRes
+import io.fluks.android.BaseActivity
 import io.fluks.core.*
 import io.fluks.debug.dependency.DependenciesDebug
 import io.fluks.debug.dispatch.DebugEvents
@@ -20,10 +21,12 @@ import io.reactivex.schedulers.Schedulers
 
 object Debug {
 
-    interface Component : DispatchDebug.Component {
+    interface Component :
+        DispatchDebug.Component,
+        BaseActivity.Component {
+
         val debugEventsStore: Store<DebugEvents.Effect, DebugEvents>
         val debug: (Dispatcher) -> Disposable
-        fun Activity.initDebugDrawer(): DebugDrawer
     }
 
     class Module(
@@ -46,11 +49,13 @@ object Debug {
             )
         }
 
-        override fun Activity.initDebugDrawer() = DebugDrawer
-            .Builder(this)
-            .withTheme(themeId)
-            .modules(*modules)
-            .build()!!
+        override fun Activity.initDebugDrawer() {
+            DebugDrawer
+                .Builder(this)
+                .withTheme(themeId)
+                .modules(*modules)
+                .build()!!
+        }
 
         override val debug: Dispatcher.() -> Disposable by create(multiton()) { dispatcher ->
             dispatcher.input

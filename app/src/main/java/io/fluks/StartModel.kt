@@ -1,4 +1,4 @@
-package io.fluks.feature
+package io.fluks
 
 import io.fluks.core.Action
 import io.fluks.core.Dispatch

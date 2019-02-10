@@ -1,7 +1,6 @@
-package io.fluks.util.android.input
+package io.fluks.android.input
 
 import io.reactivex.disposables.CompositeDisposable
-import io.fluks.util.android.value
 
 class InputValidator(
     private vararg val inputs: InputObservable

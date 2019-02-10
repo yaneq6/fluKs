@@ -1,6 +1,6 @@
 package io.fluks.feature.login.view
 
-import io.fluks.util.android.BaseFragment
+import io.fluks.android.BaseFragment
 import io.fluks.di.android.dependencies
 import io.fluks.databinding.LoginBinding
 import io.fluks.feature.session.Session
