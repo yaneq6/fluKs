@@ -13,8 +13,6 @@
       <module fileurl="file://$PROJECT_DIR$/fluKs.iml" filepath="$PROJECT_DIR$/fluKs.iml" />
       <module fileurl="file://$PROJECT_DIR$/framework/framework.iml" filepath="$PROJECT_DIR$/framework/framework.iml" />
       <module fileurl="file://$PROJECT_DIR$/framework/android/framework-android.iml" filepath="$PROJECT_DIR$/framework/android/framework-android.iml" />
-      <module fileurl="file://$PROJECT_DIR$/generator/generator.iml" filepath="$PROJECT_DIR$/generator/generator.iml" />
-      <module fileurl="file://$PROJECT_DIR$/scheme/scheme.iml" filepath="$PROJECT_DIR$/scheme/scheme.iml" />
     </modules>
   </component>
 </project>

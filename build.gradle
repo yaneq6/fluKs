@@ -1,4 +1,4 @@
-apply from: 'scheme.gradle'
+//apply from: 'scheme.gradle'
 
 buildscript {
     ext {

@@ -2,7 +2,6 @@
 
 package io.fluks.common
 
-import java.lang.reflect.Proxy
 import kotlin.reflect.KClass
 
 val KClass<*>.innerName
