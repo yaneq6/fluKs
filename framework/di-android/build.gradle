@@ -17,5 +17,5 @@ dependencies {
     implementation dep.kotlin
     implementation dep.androidBase
     api project(':framework:di')
-    api project(':framework:common:android')
+    api project(':framework:common-android')
 }

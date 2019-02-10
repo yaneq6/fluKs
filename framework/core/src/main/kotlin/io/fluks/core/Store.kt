@@ -42,14 +42,14 @@ private class DefaultStore<E : Effect, State : Reduce<E, State>>(
 
     private val errorSubject = PublishSubject.create<Pair<State, Event.Error>>()
 
-    override fun invoke(event: E) {
-        state(event)?.let { newState ->
-            stateHolder.put(newState, event)
+    override fun invoke(effect: E) {
+        state(effect)?.let { newState ->
+            stateHolder.put(newState, effect)
         } ?: errorSubject.onNext(
             state to Event.Error(
-                event = event,
+                event = effect,
                 throwable = IllegalArgumentException(
-                    "Cannot reduce effect: $event, of type: ${event::class.java}"
+                    "Cannot reduce effect: $effect, of type: ${effect::class.java}"
                 )
             )
         )

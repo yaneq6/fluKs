@@ -2,17 +2,17 @@
 <project version="4">
   <component name="ProjectModuleManager">
     <modules>
+      <module fileurl="file://$PROJECT_DIR$/framework/android/android.iml" filepath="$PROJECT_DIR$/framework/android/android.iml" />
       <module fileurl="file://$PROJECT_DIR$/app/app.iml" filepath="$PROJECT_DIR$/app/app.iml" />
       <module fileurl="file://$PROJECT_DIR$/framework/common/common.iml" filepath="$PROJECT_DIR$/framework/common/common.iml" />
-      <module fileurl="file://$PROJECT_DIR$/framework/common/android/common-android.iml" filepath="$PROJECT_DIR$/framework/common/android/common-android.iml" />
+      <module fileurl="file://$PROJECT_DIR$/framework/common-android/common-android.iml" filepath="$PROJECT_DIR$/framework/common-android/common-android.iml" />
       <module fileurl="file://$PROJECT_DIR$/framework/core/core.iml" filepath="$PROJECT_DIR$/framework/core/core.iml" />
-      <module fileurl="file://$PROJECT_DIR$/framework/core/android/core-android.iml" filepath="$PROJECT_DIR$/framework/core/android/core-android.iml" />
+      <module fileurl="file://$PROJECT_DIR$/framework/core-android/core-android.iml" filepath="$PROJECT_DIR$/framework/core-android/core-android.iml" />
       <module fileurl="file://$PROJECT_DIR$/framework/debug/debug.iml" filepath="$PROJECT_DIR$/framework/debug/debug.iml" />
       <module fileurl="file://$PROJECT_DIR$/framework/di/di.iml" filepath="$PROJECT_DIR$/framework/di/di.iml" />
-      <module fileurl="file://$PROJECT_DIR$/framework/di/android/di-android.iml" filepath="$PROJECT_DIR$/framework/di/android/di-android.iml" />
+      <module fileurl="file://$PROJECT_DIR$/framework/di-android/di-android.iml" filepath="$PROJECT_DIR$/framework/di-android/di-android.iml" />
       <module fileurl="file://$PROJECT_DIR$/fluKs.iml" filepath="$PROJECT_DIR$/fluKs.iml" />
       <module fileurl="file://$PROJECT_DIR$/framework/framework.iml" filepath="$PROJECT_DIR$/framework/framework.iml" />
-      <module fileurl="file://$PROJECT_DIR$/framework/android/framework-android.iml" filepath="$PROJECT_DIR$/framework/android/framework-android.iml" />
     </modules>
   </component>
 </project>

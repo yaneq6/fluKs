@@ -22,7 +22,7 @@ dependencies {
     implementation dep.androidBase
     implementation dep.timber
     implementation dep.rxJava
-    api project(':framework:common:android')
-    api project(':framework:core:android')
-    api project(':framework:di:android')
+    api project(':framework:common-android')
+    api project(':framework:core-android')
+    api project(':framework:di-android')
 }
