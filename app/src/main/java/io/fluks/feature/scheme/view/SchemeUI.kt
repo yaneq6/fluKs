@@ -5,7 +5,7 @@ import android.view.View
 import io.fluks.App
 import io.fluks.Debug
 import io.fluks.R
-import io.fluks.util.android.GetContext
+import io.fluks.common.android.GetContext
 import io.fluks.core.Platform
 import io.fluks.di.provide
 import io.fluks.di.provider.singleton

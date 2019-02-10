@@ -3,6 +3,7 @@
     <string name="login_title">SignIn</string>
     <string name="login_login_hint">Login</string>
     <string name="login_password_hint">Password</string>
+    <string name="login_login_button">Login</string>
     <string name="scheme_title">Scheme</string>
     <string name="scheme_action_logout">logout</string>
 </resources>

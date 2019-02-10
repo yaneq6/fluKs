@@ -8,23 +8,23 @@ import android.databinding.InverseBindingListener
 import android.view.View
 import android.widget.EditText
 
-@BindingAdapter("app:error")
+@BindingAdapter("android:error")
 fun EditText.error(error: String?) {
     this.error = error
 }
 
-@BindingAdapter("app:onFocusChange")
+@BindingAdapter("android:onFocusChange")
 fun View.onFocusChange(onFocusChange: InverseBindingListener?) {
     onFocusChangeListener = View.OnFocusChangeListener { _, _ ->
         onFocusChange?.onChange()
     }
 }
 
-@BindingAdapter("app:focus")
+@BindingAdapter("android:focus")
 fun EditText.setFocus(focus: Boolean) {
     if (focus) requestFocus()
 }
 
-@InverseBindingAdapter(attribute = "app:focus", event = "app:onFocusChange")
+@InverseBindingAdapter(attribute = "android:focus", event = "android:onFocusChange")
 fun View.getFocus(): Boolean = hasFocus()
 

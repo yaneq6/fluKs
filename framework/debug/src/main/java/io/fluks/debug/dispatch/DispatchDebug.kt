@@ -1,15 +1,14 @@
-package io.fluks.util.debug.dispatch
+package io.fluks.debug.dispatch
 
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import io.fluks.Debug
-import io.fluks.R
+import io.fluks.common.android.applicationContext
 import io.fluks.core.Dispatch
 import io.fluks.core.DispatchDelegate
 import io.fluks.core.Dispatcher
 import io.fluks.core.Event
-import io.fluks.util.android.applicationContext
+import io.fluks.debug.R
 import io.fluks.di.Depends
 import io.fluks.di.android.dependencies
 import io.fluks.di.android.di
@@ -22,25 +21,25 @@ class DispatchDebug :
     DebugModuleAdapter(),
     LayoutContainer,
     DispatchDelegate<Event>,
-    Depends<Debug.Component> {
+    Depends<DispatchDebug.Component> {
 
     override lateinit var containerView: View private set
 
     override val component by lazy {
-        applicationContext!!.dependencies<Debug.Component>()
+        applicationContext!!.dependencies<DispatchDebug.Component>()
     }
 
     override val dispatch: Dispatch<Event> by lazyDi {
         applicationContext!!.dependencies<Dispatcher.Component>().dispatcher
     }
 
-    private val actionsStore get() = di { debugEventsStore }
+    private val debugEvents get() = di { debugEvents }
 
     override fun onCreateView(inflater: LayoutInflater, parent: ViewGroup): View = inflater
         .inflate(R.layout.debug_dispatch, parent, false)
         .also { containerView = it }
 
-    override fun onOpened() = actionsStore.state.actions.forEach { action ->
+    override fun onOpened() = debugEvents.forEach { action ->
         itemsLayout
             .createEventItemView()
             .setEvent(action) {
@@ -50,4 +49,9 @@ class DispatchDebug :
     }
 
     override fun onClosed() = itemsLayout.removeAllViews()
+
+    interface Component {
+        val debugEvents: List<Event>
+
+    }
 }

@@ -5,20 +5,20 @@ apply plugin: 'kotlin-android-extensions'
 android {
     defaultConfig {
         testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
+
     }
     lintOptions {
         abortOnError false
     }
-    androidExtensions {
-        experimental = true
-    }
     dataBinding {
         enabled = true
+    }
+    androidExtensions {
+        experimental = true
     }
 }
 dependencies {
     implementation dep.kotlin
-    implementation dep.timber
-    implementation dep.rxJava
-    api project(':framework:common')
+    implementation dep.androidBase
+    api project(':framework:common:android')
 }

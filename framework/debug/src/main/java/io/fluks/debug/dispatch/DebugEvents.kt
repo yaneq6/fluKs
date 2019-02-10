@@ -1,4 +1,4 @@
-package io.fluks.util.debug.dispatch
+package io.fluks.debug.dispatch
 
 import android.content.Context
 import com.google.gson.Gson
@@ -108,6 +108,7 @@ data class DebugEvents(
 
 
         object Factory : TypeAdapterFactory {
+            @Suppress("UNCHECKED_CAST")
             override fun <T : Any?> create(gson: Gson, type: TypeToken<T>): TypeAdapter<T>? =
                 if (!type.rawType.isAssignableFrom(Event::class.java)) null
                 else GsonTypeAdapter(gson) as? TypeAdapter<T>

@@ -1,10 +1,10 @@
-package io.fluks.util.debug.dispatch
+package io.fluks.debug.dispatch
 
 import android.view.ViewGroup
-import io.fluks.R
-import io.fluks.util.android.inflate
-import io.fluks.core.Event
+import io.fluks.common.android.inflate
 import io.fluks.common.innerName
+import io.fluks.core.Event
+import io.fluks.debug.R
 import kotlinx.android.synthetic.main.debug_event_item.view.*
 
 fun ViewGroup.createEventItemView() = inflate<ViewGroup>(R.layout.debug_event_item)

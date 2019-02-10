@@ -1,7 +1,7 @@
-package io.fluks.util.debug.dispatch
+package io.fluks.debug.dispatch
 
 import com.google.gson.GsonBuilder
-import io.fluks.feature.session.action.SignIn
+import io.fluks.core.Event
 import org.junit.Assert.assertEquals
 import org.junit.Test
 
@@ -26,15 +26,20 @@ class DebugEventsGsonTypeAdapterFactoryTest {
 
     companion object {
         const val STRING_JSON =
-            "{\"actions\":[],\"savedActions\":[{\"type\":\"io.fluks.feature.session.input.SignIn\",\"value\":\"{\\\"login\\\":\\\"login\\\",\\\"password\\\":\\\"password\\\"}\"}]}"
+            "{\"actions\":[],\"savedActions\":[{\"type\":\"io.fluks.debug.dispatch.TestDataClass\",\"value\":\"{\\\"foo\\\":\\\"foo\\\",\\\"bar\\\":\\\"bar\\\"}\"}]}"
         val OBJECT_JSON = DebugEvents(
             actions = listOf(),
             savedActions = listOf(
-                SignIn(
-                    login = "login",
-                    password = "password"
+                TestDataClass(
+                    foo = "foo",
+                    bar = "bar"
                 )
             )
         )
     }
 }
+
+data class TestDataClass(
+    val foo: String,
+    val bar: String
+) : Event

@@ -12,13 +12,16 @@ android {
     androidExtensions {
         experimental = true
     }
-    dataBinding {
-        enabled = true
-    }
 }
 dependencies {
     implementation dep.kotlin
     implementation dep.timber
-    implementation dep.rxJava
-    api project(':framework:common')
+    implementation dep.gson
+    api dep.debugDrawer
+    debugApi dep.debugDrawerDebug
+    releaseApi dep.debugDrawerRelease
+    implementation project(':framework:common:android')
+    implementation project(':framework:core:android')
+    implementation project(':framework:di:android')
+    testImplementation dep.test
 }

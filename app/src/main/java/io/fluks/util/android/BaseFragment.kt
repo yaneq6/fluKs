@@ -6,6 +6,7 @@ import android.support.v4.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import io.fluks.common.android.getSerializable
 import io.reactivex.disposables.Disposable
 import io.fluks.util.android.databinding.DataBindingDelegate
 import io.fluks.di.Depends
