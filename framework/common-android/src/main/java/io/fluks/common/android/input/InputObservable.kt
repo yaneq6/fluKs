@@ -1,6 +1,6 @@
-package io.fluks.android.input
+package io.fluks.common.android.input
 
-import io.fluks.android.databinding.ObservableProperty
+import io.fluks.common.android.databinding.ObservableProperty
 
 class InputObservable(
     private val validate: (String) -> String? = { null },

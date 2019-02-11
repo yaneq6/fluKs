@@ -2,7 +2,7 @@ package io.fluks
 
 import android.app.Activity
 import android.support.annotation.StyleRes
-import io.fluks.android.BaseActivity
+import io.fluks.common.android.BaseActivity
 import io.fluks.common.Event
 import io.fluks.core.Dispatcher
 import io.fluks.common.Platform

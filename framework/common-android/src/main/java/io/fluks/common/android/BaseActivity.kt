@@ -1,4 +1,4 @@
-package io.fluks.android
+package io.fluks.common.android
 
 import android.app.Activity
 import android.content.Context
@@ -9,8 +9,8 @@ import android.support.v7.app.AppCompatActivity
 import android.support.v7.widget.Toolbar
 import android.view.View
 import android.widget.ProgressBar
-import io.fluks.android.databinding.DataBindingDelegate
 import io.fluks.common.*
+import io.fluks.common.android.databinding.DataBindingDelegate
 import timber.log.Timber
 import java.lang.ref.WeakReference
 

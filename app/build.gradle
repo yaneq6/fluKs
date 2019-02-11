@@ -31,7 +31,6 @@ android {
 TODO Cleanup this mess below
  */
 dependencies {
-    implementation project(':framework:android')
     implementation project(':framework:debug')
     implementation project(':framework:core-android')
     implementation project(':framework:common-android')

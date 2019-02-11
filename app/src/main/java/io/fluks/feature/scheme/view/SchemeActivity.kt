@@ -5,7 +5,7 @@ import android.view.Menu
 import android.view.MenuInflater
 import android.view.MenuItem
 import io.fluks.R
-import io.fluks.android.BaseActivity
+import io.fluks.common.android.BaseActivity
 import io.fluks.common.weak
 import io.fluks.databinding.SchemeBinding
 import io.fluks.common.createDi

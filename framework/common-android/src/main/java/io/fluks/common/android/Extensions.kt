@@ -9,6 +9,7 @@ import android.support.annotation.LayoutRes
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import io.fluks.common.Event
 import kotlinx.android.extensions.LayoutContainer
 
 val LayoutContainer.context get() = containerView?.context
@@ -45,6 +46,12 @@ var <T> ObservableField<T>.value: T?
     get() = get()
     set(value) {
         set(value)
+    }
+
+var Intent.event: Event?
+    get() = getSerializableExtra<Event>("event")
+    set(value) {
+        putExtra("event", value)
     }
 
 typealias GetContext = () -> Context?

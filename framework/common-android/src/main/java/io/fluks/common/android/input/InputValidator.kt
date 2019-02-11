@@ -1,4 +1,4 @@
-package io.fluks.android.input
+package io.fluks.common.android.input
 
 import io.reactivex.disposables.CompositeDisposable
 

@@ -1,4 +1,4 @@
-package io.fluks.android.databinding
+package io.fluks.common.android.databinding
 
 import android.app.Activity
 import android.databinding.DataBindingUtil

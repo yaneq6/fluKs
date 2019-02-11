@@ -2,7 +2,7 @@ package io.fluks.feature.login.view
 
 import io.fluks.App
 import io.fluks.R
-import io.fluks.android.BaseActivity
+import io.fluks.common.android.BaseActivity
 import io.fluks.common.UI
 import io.fluks.databinding.LoginBinding
 import io.fluks.di.provide

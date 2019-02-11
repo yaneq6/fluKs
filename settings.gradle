@@ -1,5 +1,4 @@
 include ':app'
-include ':framework:android'
 include ':framework:common'
 include ':framework:common-android'
 include ':framework:core'
