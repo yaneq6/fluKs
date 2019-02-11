@@ -36,10 +36,10 @@ object Session {
     }
 
     class Module(
-        data: Core.Component
+        core: Core.Component
     ) :
         Component,
-        Core.Component by data {
+        Core.Component by core {
 
         override val signOut by provide {
             SignOut.Interactor(api)

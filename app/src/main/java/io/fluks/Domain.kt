@@ -22,12 +22,12 @@ object Domain {
 
 
     class Module(
-        data: Core.Component
+        core: Core.Component
     ) :
         Component,
-        Core.Component by data,
-        Session.Component by Session.Module(data),
-        Scheme.Component by Scheme.Module(data) {
+        Core.Component by core,
+        Session.Component by Session.Module(core),
+        Scheme.Component by Scheme.Module(core) {
 
         override val dispatcher by provide(singleton()) {
 

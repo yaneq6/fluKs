@@ -17,21 +17,13 @@ import timber.log.Timber
 
 class App : Application(), Depends<App.Component> {
 
-    val dependencies by lazy {
-        Dependencies()
-    }
-
-    private val data by lazy {
-        Core.Module(
-            context = this,
-            dependencies = dependencies
-        )
-    }
-
     override val component by createDi {
         Module(
             app = this,
-            data = data
+            data = Core.Module(
+                context = this,
+                dependencies = Dependencies()
+            )
         )
     }
 
