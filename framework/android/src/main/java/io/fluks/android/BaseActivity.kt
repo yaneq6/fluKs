@@ -12,7 +12,7 @@ import android.widget.ProgressBar
 import io.fluks.android.databinding.DataBindingDelegate
 import io.fluks.common.*
 import io.fluks.core.*
-import io.fluks.core.android.middleware.Finishable
+import io.fluks.core.middleware.Finishable
 import timber.log.Timber
 import java.lang.ref.WeakReference
 

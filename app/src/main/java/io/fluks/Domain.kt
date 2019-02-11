@@ -7,7 +7,7 @@ import io.fluks.feature.scheme.Scheme
 import io.fluks.feature.session.Session
 import io.fluks.core.middleware.Controller
 import io.fluks.core.middleware.Executor
-import io.fluks.core.android.middleware.Navigator
+import io.fluks.core.middleware.Navigator
 import io.fluks.core.middleware.Splitter
 import io.fluks.di.provide
 import io.fluks.di.provider.singleton

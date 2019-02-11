@@ -1,4 +1,4 @@
-package io.fluks.core.android.middleware
+package io.fluks.core.middleware
 
 import io.fluks.common.Action
 import io.fluks.common.Event
