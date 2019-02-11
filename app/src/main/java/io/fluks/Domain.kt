@@ -42,8 +42,7 @@ object Domain {
                     mainScheduler = mainScheduler,
                     backgroundScheduler = backgroundScheduler,
                     interactors = mapOf(
-                        interactor { signIn },
-                        interactor { signOut }
+                        interactor { sessionInteractor }
                     )
                 ),
 

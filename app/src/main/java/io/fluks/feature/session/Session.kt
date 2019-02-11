@@ -1,7 +1,10 @@
 package io.fluks.feature.session
 
 import io.fluks.Core
+import io.fluks.base.Action
 import io.fluks.base.BaseEffect
+import io.fluks.base.Event
+import io.fluks.core.AbstractInteractor
 import io.fluks.core.Reduce
 import io.fluks.core.SimpleStateHolder
 import io.fluks.core.Store
@@ -14,6 +17,7 @@ import io.fluks.feature.session.action.SignOut
 object Session {
 
     interface Effect : BaseEffect
+    interface Async: Action.Async
 
     data class State(
         val token: String? = null
@@ -29,9 +33,14 @@ object Session {
         }
     }
 
+    class Interactor(
+        val api: (Action) -> Event
+    ): AbstractInteractor<Async, Event> {
+        override fun invoke(action: Async) = api(action)
+    }
+
     interface Component {
-        val signIn: SignIn.Interactor
-        val signOut: SignOut.Interactor
+        val sessionInteractor: Session.Interactor
         val sessionStore: Store<Effect, State>
     }
 
@@ -41,12 +50,8 @@ object Session {
         Component,
         Core.Component by core {
 
-        override val signOut by provide {
-            SignOut.Interactor(api)
-        }
-
-        override val signIn by provide {
-            SignIn.Interactor(api)
+        override val sessionInteractor by provide {
+            Session.Interactor(api)
         }
 
         override val sessionStore by provide(singleton()) { name ->
