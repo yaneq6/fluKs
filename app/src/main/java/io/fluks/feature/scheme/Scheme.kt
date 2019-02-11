@@ -1,7 +1,7 @@
 package io.fluks.feature.scheme
 
 import io.fluks.Core
-import io.fluks.core.CoreEffect
+import io.fluks.common.BaseEffect
 import io.fluks.core.Reduce
 import io.fluks.core.SimpleStateHolder
 import io.fluks.core.Store
@@ -12,7 +12,7 @@ object Scheme {
 
     class State : Reduce<Effect, State>
 
-    interface Effect : CoreEffect
+    interface Effect : BaseEffect
 
     interface Component {
         val schemeStore: Store<Effect, State>

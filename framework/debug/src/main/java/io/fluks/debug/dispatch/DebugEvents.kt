@@ -8,7 +8,7 @@ import com.google.gson.TypeAdapterFactory
 import com.google.gson.reflect.TypeToken
 import com.google.gson.stream.JsonReader
 import com.google.gson.stream.JsonWriter
-import io.fluks.core.CoreEffect
+import io.fluks.common.BaseEffect
 import io.fluks.common.Event
 import io.fluks.core.Reduce
 import io.fluks.core.StateHolder
@@ -20,7 +20,7 @@ data class DebugEvents(
 ) :
     Reduce<DebugEvents.Effect, DebugEvents> {
 
-    interface Effect : CoreEffect
+    interface Effect : BaseEffect
 
     data class Add(val event: Event) : Effect
 

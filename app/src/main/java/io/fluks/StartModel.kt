@@ -1,6 +1,6 @@
 package io.fluks
 
-import io.fluks.core.Action
+import io.fluks.common.Action
 import io.fluks.common.Dispatch
 import io.fluks.core.Store
 import io.fluks.feature.login.view.NavigateLogin

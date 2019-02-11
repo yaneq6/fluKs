@@ -18,6 +18,23 @@ interface Event : Serializable {
     }
 }
 
+
+interface Effect : Event
+
+interface Action : Event {
+
+    interface Async : Action
+
+    interface Navigate<Context>: Action {
+
+        fun Context.navigate()
+
+        val finishCurrent get() = true
+    }
+}
+
+typealias BaseEffect = Effect
+
 interface Dispatch<in T : Event> {
     infix fun Any.dispatch(any: T?)
 

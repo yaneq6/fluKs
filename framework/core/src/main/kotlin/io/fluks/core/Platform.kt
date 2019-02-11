@@ -1,11 +1,12 @@
 package io.fluks.core
 
+import io.fluks.common.BaseEffect
 import io.fluks.common.unsafe
 import java.lang.ref.WeakReference
 
 interface Platform {
 
-    interface Effect : CoreEffect
+    interface Effect : BaseEffect
 
     data class State<Context>(
         val topContextRef: WeakReference<Context>

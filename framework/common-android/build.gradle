@@ -20,7 +20,6 @@ android {
 }
 dependencies {
     implementation dep.kotlin
-    implementation dep.timber
-    implementation dep.rxJava
+    api dep.timber
     api project(':framework:common')
 }

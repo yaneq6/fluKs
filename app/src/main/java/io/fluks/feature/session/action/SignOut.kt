@@ -2,7 +2,7 @@ package io.fluks.feature.session.action
 
 import io.fluks.feature.session.Session
 import io.fluks.core.AbstractInteractor
-import io.fluks.core.Action
+import io.fluks.common.Action
 import io.fluks.common.Event
 
 class SignOut: Action.Async {

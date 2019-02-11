@@ -1,7 +1,7 @@
 package io.fluks.feature.session
 
 import io.fluks.Core
-import io.fluks.core.CoreEffect
+import io.fluks.common.BaseEffect
 import io.fluks.core.Reduce
 import io.fluks.core.SimpleStateHolder
 import io.fluks.core.Store
@@ -13,7 +13,7 @@ import io.fluks.feature.session.action.SignOut
 
 object Session {
 
-    interface Effect : CoreEffect
+    interface Effect : BaseEffect
 
     data class State(
         val token: String? = null
