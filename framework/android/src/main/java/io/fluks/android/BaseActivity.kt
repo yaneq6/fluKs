@@ -14,9 +14,9 @@ import io.fluks.common.measure
 import io.fluks.common.weak
 import io.fluks.core.*
 import io.fluks.core.android.middleware.Finishable
-import io.fluks.di.Depends
-import io.fluks.di.android.di
-import io.fluks.di.android.lazyDi
+import io.fluks.common.Depends
+import io.fluks.common.di
+import io.fluks.common.lazyDi
 import timber.log.Timber
 import java.lang.ref.WeakReference
 

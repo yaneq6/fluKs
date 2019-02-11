@@ -7,10 +7,10 @@ import io.fluks.core.DispatchDelegate
 import io.fluks.core.Event
 import io.fluks.core.Platform
 import io.fluks.common.weak
-import io.fluks.di.Depends
-import io.fluks.di.android.dependencies
-import io.fluks.di.android.di
-import io.fluks.di.android.lazyDi
+import io.fluks.common.Depends
+import io.fluks.common.dependencies
+import io.fluks.common.di
+import io.fluks.common.lazyDi
 
 class StartActivity :
     AppCompatActivity(),

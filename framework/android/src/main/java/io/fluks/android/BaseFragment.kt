@@ -10,8 +10,8 @@ import io.fluks.android.databinding.DataBindingDelegate
 import io.fluks.common.android.getSerializable
 import io.fluks.core.Event
 import io.fluks.core.UI
-import io.fluks.di.Depends
-import io.fluks.di.android.di
+import io.fluks.common.Depends
+import io.fluks.common.di
 import io.reactivex.disposables.Disposable
 
 abstract class BaseFragment<

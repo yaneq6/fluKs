@@ -8,8 +8,8 @@ import io.fluks.common.android.FluksLogTimber
 import io.fluks.common.measure
 import io.fluks.core.Platform
 import io.fluks.di.Dependencies
-import io.fluks.di.Depends
-import io.fluks.di.android.createDi
+import io.fluks.common.Depends
+import io.fluks.common.createDi
 import io.fluks.di.provide
 import io.fluks.di.provider.singleton
 import io.palaima.debugdrawer.timber.data.LumberYard

@@ -8,9 +8,9 @@ import io.fluks.R
 import io.fluks.android.BaseActivity
 import io.fluks.common.weak
 import io.fluks.databinding.SchemeBinding
-import io.fluks.di.android.createDi
-import io.fluks.di.android.dependencies
-import io.fluks.di.android.lazyDi
+import io.fluks.common.createDi
+import io.fluks.common.dependencies
+import io.fluks.common.lazyDi
 import kotlinx.android.synthetic.main.scheme.*
 
 class SchemeActivity : BaseActivity<SchemeBinding, SchemeUI.Component>() {

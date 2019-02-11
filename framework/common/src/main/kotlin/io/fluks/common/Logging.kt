@@ -67,5 +67,7 @@ fun <T : Any, R> T.measure(message: Any = "", execute: () -> R): R =
         ref.get()
     } else execute()
 
+fun <T : Any, R> T.measureCreate(name: String = "", block: () -> R): R =
+    measure("create $name", block)
 
 fun timestamp() = System.currentTimeMillis()
