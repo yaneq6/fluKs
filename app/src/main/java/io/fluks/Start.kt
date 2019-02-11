@@ -1,15 +1,15 @@
 package io.fluks
 
-import io.fluks.feature.session.Session
-import io.fluks.core.Platform
+import io.fluks.common.Dispatch
 import io.fluks.di.provide
 import io.fluks.di.provider.weakSingleton
+import io.fluks.feature.session.Session
 
 object Start {
 
     interface Component :
         Session.Component,
-        Platform.Component {
+        Dispatch.Component {
         val model: StartModel
     }
 

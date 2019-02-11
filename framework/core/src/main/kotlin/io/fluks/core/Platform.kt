@@ -1,8 +1,6 @@
 package io.fluks.core
 
-import io.fluks.common.Dispatch
 import io.fluks.common.unsafe
-import io.reactivex.disposables.Disposable
 import java.lang.ref.WeakReference
 
 interface Platform {
@@ -24,14 +22,5 @@ interface Platform {
     data class OnTop<Context>(
         val context: WeakReference<Context>
     ) : Effect
-
-    interface Component : Dispatch.Component
 }
 
-interface UI {
-    interface Component<DataBinding> : Dispatch.Component {
-        val layoutId: Int
-        val disposable: Disposable
-        fun DataBinding.bind()
-    }
-}

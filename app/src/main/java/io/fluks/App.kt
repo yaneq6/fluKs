@@ -35,8 +35,7 @@ class App : Application(), Depends<App.Component> {
 
     interface Component :
         Domain.Component,
-        Debug.Component,
-        Platform.Component {
+        Debug.Component {
 
         val appModel: AppModel
     }

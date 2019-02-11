@@ -9,7 +9,7 @@ import android.view.ViewGroup
 import io.fluks.android.databinding.DataBindingDelegate
 import io.fluks.common.android.getSerializable
 import io.fluks.common.Event
-import io.fluks.core.UI
+import io.fluks.common.UI
 import io.fluks.common.Depends
 import io.fluks.common.di
 import io.reactivex.disposables.Disposable

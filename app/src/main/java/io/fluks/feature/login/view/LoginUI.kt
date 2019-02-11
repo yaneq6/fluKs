@@ -3,7 +3,7 @@ package io.fluks.feature.login.view
 import io.fluks.App
 import io.fluks.R
 import io.fluks.android.BaseActivity
-import io.fluks.core.UI
+import io.fluks.common.UI
 import io.fluks.databinding.LoginBinding
 import io.fluks.di.provide
 import io.fluks.di.provider.weakSingleton

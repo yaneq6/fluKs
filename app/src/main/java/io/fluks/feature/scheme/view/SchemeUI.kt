@@ -6,7 +6,7 @@ import io.fluks.App
 import io.fluks.R
 import io.fluks.android.BaseActivity
 import io.fluks.common.android.GetContext
-import io.fluks.core.UI
+import io.fluks.common.UI
 import io.fluks.databinding.SchemeBinding
 import io.fluks.di.provide
 import io.fluks.di.provider.singleton
