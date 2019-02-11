@@ -59,7 +59,7 @@ class App : Application(), Depends<App.Component> {
             measure("init App.Module") {
                 leakCanary()
                 logging()
-                middleware()
+                dispatch()
                 model()
                 vectorDrawables()
             }
@@ -76,7 +76,7 @@ class App : Application(), Depends<App.Component> {
             )
         }
 
-        private fun middleware() {
+        private fun dispatch() {
             debug(dispatch)
         }
 
