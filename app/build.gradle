@@ -33,7 +33,7 @@ TODO Cleanup this mess below
 dependencies {
     implementation project(':framework:debug')
     implementation project(':framework:core-android')
-    implementation project(':framework:common-android')
+    implementation project(':framework:base-android')
     implementation project(':framework:di-android')
     implementation dep.kotlin
     implementation dep.androidBase

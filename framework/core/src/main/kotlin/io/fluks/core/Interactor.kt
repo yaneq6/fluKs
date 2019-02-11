@@ -1,7 +1,7 @@
 package io.fluks.core
 
-import io.fluks.common.Action
-import io.fluks.common.Event
+import io.fluks.base.Action
+import io.fluks.base.Event
 import kotlin.reflect.KClass
 
 @Suppress("UNCHECKED_CAST")

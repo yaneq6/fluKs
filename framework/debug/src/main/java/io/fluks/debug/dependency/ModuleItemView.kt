@@ -1,8 +1,8 @@
 package io.fluks.debug.dependency
 
 import android.view.ViewGroup
-import io.fluks.common.android.inflate
-import io.fluks.common.innerName
+import io.fluks.base.android.inflate
+import io.fluks.base.innerName
 import io.fluks.debug.R
 import kotlinx.android.synthetic.main.debug_module_item.view.*
 import kotlin.reflect.KClass

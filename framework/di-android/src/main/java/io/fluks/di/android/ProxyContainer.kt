@@ -2,7 +2,7 @@ package io.fluks.di.android
 
 import android.support.v4.app.Fragment
 import android.support.v4.app.FragmentActivity
-import io.fluks.common.Depends
+import io.fluks.base.Depends
 
 interface ProxyContainer<D : Any> : Depends<D> {
     fun createDependencies(): D

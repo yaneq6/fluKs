@@ -1,6 +1,6 @@
 package io.fluks.core.middleware
 
-import io.fluks.common.*
+import io.fluks.base.*
 import io.fluks.core.AbstractMiddleware
 import io.fluks.core.Middleware
 import io.fluks.core.Reduce

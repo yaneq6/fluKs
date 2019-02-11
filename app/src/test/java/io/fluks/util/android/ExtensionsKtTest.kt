@@ -1,7 +1,7 @@
 package io.fluks.util.android
 
-import io.fluks.common.android.onPropertyChangedCallback
-import io.fluks.common.android.databinding.ObservableProperty
+import io.fluks.base.android.onPropertyChangedCallback
+import io.fluks.base.android.databinding.ObservableProperty
 import org.junit.Assert.assertEquals
 import org.junit.Test
 

@@ -7,7 +7,7 @@ dependencies {
     implementation dep.gson
     testImplementation dep.test
     api dep.rxJava
-    api project(":framework:common")
+    api project(":framework:base")
 }
 sourceCompatibility = "1.8"
 targetCompatibility = "1.8"

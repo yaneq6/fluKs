@@ -1,6 +1,6 @@
 package io.fluks.core
 
-import io.fluks.common.*
+import io.fluks.base.*
 
 internal fun <State : Any> StateHolder.Repository<State>.measureRead(): State? =
     measure("read $name") { state }

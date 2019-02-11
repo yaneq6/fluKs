@@ -5,12 +5,12 @@ import android.view.Menu
 import android.view.MenuInflater
 import android.view.MenuItem
 import io.fluks.R
-import io.fluks.common.android.BaseActivity
-import io.fluks.common.weak
+import io.fluks.base.android.BaseActivity
+import io.fluks.base.weak
 import io.fluks.databinding.SchemeBinding
-import io.fluks.common.createDi
-import io.fluks.common.dependencies
-import io.fluks.common.lazyDi
+import io.fluks.base.createDi
+import io.fluks.base.dependencies
+import io.fluks.base.lazyDi
 import kotlinx.android.synthetic.main.scheme.*
 
 class SchemeActivity : BaseActivity<SchemeBinding, SchemeUI.Component>() {

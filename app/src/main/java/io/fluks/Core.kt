@@ -2,10 +2,10 @@ package io.fluks
 
 import android.content.Context
 import android.content.SharedPreferences
-import io.fluks.common.Action
-import io.fluks.common.Event
-import io.fluks.common.Platform
-import io.fluks.common.weak
+import io.fluks.base.Action
+import io.fluks.base.Event
+import io.fluks.base.Platform
+import io.fluks.base.weak
 import io.fluks.core.SimpleStateHolder
 import io.fluks.core.Store
 import io.fluks.core.middleware.Navigator

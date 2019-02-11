@@ -1,6 +1,6 @@
 package io.fluks.core
 
-import io.fluks.common.Effect
+import io.fluks.base.Effect
 import io.reactivex.ObservableSource
 import io.reactivex.subjects.BehaviorSubject
 import io.reactivex.subjects.Subject

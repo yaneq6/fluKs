@@ -1,7 +1,7 @@
 package io.fluks
 
-import io.fluks.common.Action
-import io.fluks.common.Dispatch
+import io.fluks.base.Action
+import io.fluks.base.Dispatch
 import io.fluks.core.Store
 import io.fluks.feature.login.view.NavigateLogin
 import io.fluks.feature.scheme.view.NavigateScheme

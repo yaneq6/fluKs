@@ -1,8 +1,8 @@
 package io.fluks.feature.session.action
 
 import io.fluks.core.AbstractInteractor
-import io.fluks.common.Action
-import io.fluks.common.Event
+import io.fluks.base.Action
+import io.fluks.base.Event
 import io.fluks.feature.scheme.view.NavigateScheme
 import io.fluks.feature.session.Session
 

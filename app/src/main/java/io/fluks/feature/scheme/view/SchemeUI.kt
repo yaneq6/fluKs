@@ -4,9 +4,9 @@ import android.view.GestureDetector
 import android.view.View
 import io.fluks.App
 import io.fluks.R
-import io.fluks.common.android.BaseActivity
-import io.fluks.common.android.GetContext
-import io.fluks.common.UI
+import io.fluks.base.android.BaseActivity
+import io.fluks.base.android.GetContext
+import io.fluks.base.UI
 import io.fluks.databinding.SchemeBinding
 import io.fluks.di.provide
 import io.fluks.di.provider.singleton

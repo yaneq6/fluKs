@@ -1,6 +1,6 @@
 package io.fluks.core
 
-import io.fluks.common.*
+import io.fluks.base.*
 import io.reactivex.disposables.CompositeDisposable
 import io.reactivex.disposables.Disposable
 

@@ -2,8 +2,8 @@
 
 package io.fluks.core
 
-import io.fluks.common.Effect
-import io.fluks.common.Event
+import io.fluks.base.Effect
+import io.fluks.base.Event
 import io.reactivex.Observable
 import io.reactivex.ObservableSource
 import io.reactivex.subjects.PublishSubject

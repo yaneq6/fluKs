@@ -1,7 +1,7 @@
 package io.fluks.core.middleware
 
-import io.fluks.common.Effect
-import io.fluks.common.Event
+import io.fluks.base.Effect
+import io.fluks.base.Event
 import io.fluks.core.*
 import io.reactivex.disposables.Disposable
 

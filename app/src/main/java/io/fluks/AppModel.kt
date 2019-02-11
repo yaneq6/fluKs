@@ -1,7 +1,7 @@
 package io.fluks
 
-import io.fluks.common.Action
-import io.fluks.common.Dispatch
+import io.fluks.base.Action
+import io.fluks.base.Dispatch
 import io.fluks.core.*
 import io.reactivex.disposables.CompositeDisposable
 import io.reactivex.disposables.Disposable

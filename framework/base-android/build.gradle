@@ -1,0 +1,26 @@
+apply plugin: 'com.android.library'
+apply plugin: 'kotlin-android'
+apply plugin: 'kotlin-kapt'
+apply plugin: 'kotlin-android-extensions'
+apply plugin: 'com.github.dcendents.android-maven'
+group = 'com.github.yaneq6'
+android {
+    defaultConfig {
+        testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
+    }
+    lintOptions {
+        abortOnError false
+    }
+    androidExtensions {
+        experimental = true
+    }
+    dataBinding {
+        enabled = true
+    }
+}
+dependencies {
+    implementation dep.kotlin
+    api dep.androidBase
+    api dep.timber
+    api project(':framework:base')
+}

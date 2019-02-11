@@ -1,7 +1,7 @@
 package io.fluks.debug.dispatch
 
 import com.google.gson.GsonBuilder
-import io.fluks.common.Event
+import io.fluks.base.Event
 import org.junit.Assert.assertEquals
 import org.junit.Test
 

@@ -2,7 +2,7 @@ package io.fluks.feature.scheme.view
 
 import android.content.Context
 import android.content.Intent
-import io.fluks.common.Action
+import io.fluks.base.Action
 
 data class NavigateScheme(
     override val finishCurrent: Boolean = false

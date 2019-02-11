@@ -1,8 +1,8 @@
 package io.fluks.feature.login.view
 
-import io.fluks.common.android.BaseFragment
+import io.fluks.base.android.BaseFragment
 import io.fluks.databinding.LoginBinding
-import io.fluks.common.dependencies
+import io.fluks.base.dependencies
 
 class LoginFragment : BaseFragment<LoginBinding, LoginUI.Component>() {
 

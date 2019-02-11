@@ -3,8 +3,8 @@ package io.fluks.debug.dispatch
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import io.fluks.common.*
-import io.fluks.common.android.applicationContext
+import io.fluks.base.*
+import io.fluks.base.android.applicationContext
 import io.fluks.debug.R
 import io.palaima.debugdrawer.base.DebugModuleAdapter
 import kotlinx.android.extensions.LayoutContainer

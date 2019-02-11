@@ -2,10 +2,10 @@ package io.fluks
 
 import android.app.Activity
 import android.support.annotation.StyleRes
-import io.fluks.common.android.BaseActivity
-import io.fluks.common.Event
+import io.fluks.base.android.BaseActivity
+import io.fluks.base.Event
 import io.fluks.core.Dispatcher
-import io.fluks.common.Platform
+import io.fluks.base.Platform
 import io.fluks.core.SimpleStateHolder
 import io.fluks.core.Store
 import io.fluks.debug.dependency.DependenciesDebug

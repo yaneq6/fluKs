@@ -2,9 +2,9 @@
 
 package io.fluks.core
 
-import io.fluks.common.Event
-import io.fluks.common.WeakProvider
-import io.fluks.common.timestamp
+import io.fluks.base.Event
+import io.fluks.base.WeakProvider
+import io.fluks.base.timestamp
 import io.reactivex.Observable
 import io.reactivex.disposables.Disposable
 import io.reactivex.subjects.PublishSubject

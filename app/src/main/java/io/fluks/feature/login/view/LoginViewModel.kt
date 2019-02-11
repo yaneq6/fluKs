@@ -1,10 +1,10 @@
 package io.fluks.feature.login.view
 
-import io.fluks.common.android.input.InputObservable
-import io.fluks.common.android.input.InputValidator
-import io.fluks.common.android.input.value
-import io.fluks.common.Dispatch
-import io.fluks.common.Event
+import io.fluks.base.android.input.InputObservable
+import io.fluks.base.android.input.InputValidator
+import io.fluks.base.android.input.value
+import io.fluks.base.Dispatch
+import io.fluks.base.Event
 import io.fluks.core.*
 import io.fluks.feature.session.Session
 import io.fluks.feature.session.action.SignIn

@@ -1,6 +1,6 @@
 package io.fluks.core
 
-import io.fluks.common.Effect
+import io.fluks.base.Effect
 
 fun <E: Effect, State : Reduce<E, State>>  State.reduce(effects: List<E>) =
     effects.fold(this) { state, effect -> state(effect) ?: state }

@@ -3,12 +3,12 @@ package io.fluks
 import android.app.Application
 import android.support.v7.app.AppCompatDelegate
 import com.squareup.leakcanary.LeakCanary
-import io.fluks.common.FluksLog
-import io.fluks.common.android.FluksLogTimber
-import io.fluks.common.measure
+import io.fluks.base.FluksLog
+import io.fluks.base.android.FluksLogTimber
+import io.fluks.base.measure
 import io.fluks.di.Dependencies
-import io.fluks.common.Depends
-import io.fluks.common.createDi
+import io.fluks.base.Depends
+import io.fluks.base.createDi
 import io.fluks.di.provide
 import io.fluks.di.provider.singleton
 import io.palaima.debugdrawer.timber.data.LumberYard

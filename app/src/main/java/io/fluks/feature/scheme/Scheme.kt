@@ -1,7 +1,7 @@
 package io.fluks.feature.scheme
 
 import io.fluks.Core
-import io.fluks.common.BaseEffect
+import io.fluks.base.BaseEffect
 import io.fluks.core.Reduce
 import io.fluks.core.SimpleStateHolder
 import io.fluks.core.Store

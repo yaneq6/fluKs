@@ -1,10 +1,10 @@
 package io.fluks.core.middleware
 
 import io.reactivex.Scheduler
-import io.fluks.common.measure
+import io.fluks.base.measure
 import io.fluks.core.AbstractMiddleware
-import io.fluks.common.Action
-import io.fluks.common.Event
+import io.fluks.base.Action
+import io.fluks.base.Event
 import io.fluks.core.Middleware
 import kotlin.reflect.KClass
 
