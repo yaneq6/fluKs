@@ -4,16 +4,19 @@ import android.content.Context
 import android.content.SharedPreferences
 import io.fluks.common.Action
 import io.fluks.common.Event
+import io.fluks.common.Platform
 import io.fluks.common.weak
-import io.fluks.core.*
-import io.reactivex.Scheduler
-import io.reactivex.android.schedulers.AndroidSchedulers
-import io.reactivex.schedulers.Schedulers
-import io.fluks.feature.session.action.SignIn
-import io.fluks.feature.session.action.SignOut
+import io.fluks.core.SimpleStateHolder
+import io.fluks.core.Store
+import io.fluks.core.middleware.Navigator
 import io.fluks.di.DependenciesAccumulator
 import io.fluks.di.provide
 import io.fluks.di.provider.singleton
+import io.fluks.feature.session.action.SignIn
+import io.fluks.feature.session.action.SignOut
+import io.reactivex.Scheduler
+import io.reactivex.android.schedulers.AndroidSchedulers
+import io.reactivex.schedulers.Schedulers
 
 object Core {
 
@@ -26,7 +29,7 @@ object Core {
 
         val sharedPreferences: SharedPreferences
 
-        val platformStore: Store<Platform.Effect, Platform.State<Context>>
+        val contextStore: Store<Platform.Effect, Navigator.State<Context>>
 
         val mainScheduler: Scheduler
 
@@ -56,8 +59,8 @@ object Core {
             context.getSharedPreferences(Core::class.qualifiedName, Context.MODE_PRIVATE)!!
         }
 
-        override val platformStore by provide(singleton()) {
-            Store(SimpleStateHolder(Platform.State(context.weak())))
+        override val contextStore by provide(singleton()) {
+            Store(SimpleStateHolder(Navigator.State(context.weak())))
         }
     }
 }

@@ -1,6 +1,16 @@
 package io.fluks.common
 
 import io.reactivex.disposables.Disposable
+import java.lang.ref.WeakReference
+
+interface Platform {
+
+    interface Effect : BaseEffect
+
+    data class OnTop<Context>(
+        val context: WeakReference<Context>
+    ) : Effect
+}
 
 interface UI {
     interface Component<DataBinding> : Dispatch.Component {

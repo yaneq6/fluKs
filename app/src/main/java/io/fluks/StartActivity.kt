@@ -2,15 +2,8 @@ package io.fluks
 
 import android.os.Bundle
 import android.support.v7.app.AppCompatActivity
-import io.fluks.common.Dispatch
-import io.fluks.common.DispatchDelegate
-import io.fluks.common.Event
-import io.fluks.core.Platform
-import io.fluks.common.weak
-import io.fluks.common.Depends
-import io.fluks.common.dependencies
-import io.fluks.common.di
-import io.fluks.common.lazyDi
+import io.fluks.common.*
+import io.fluks.common.Platform
 
 class StartActivity :
     AppCompatActivity(),

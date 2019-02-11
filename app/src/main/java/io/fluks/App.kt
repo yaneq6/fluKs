@@ -6,7 +6,6 @@ import com.squareup.leakcanary.LeakCanary
 import io.fluks.common.FluksLog
 import io.fluks.common.android.FluksLogTimber
 import io.fluks.common.measure
-import io.fluks.core.Platform
 import io.fluks.di.Dependencies
 import io.fluks.common.Depends
 import io.fluks.common.createDi

@@ -35,7 +35,7 @@ object Domain {
                 splitter = Splitter(),
 
                 navigator = Navigator(
-                    store = platformStore
+                    store = contextStore
                 ),
 
                 async = Executor(
@@ -51,7 +51,7 @@ object Domain {
                     storeProviders = listOf(
                         store { sessionStore },
                         store { schemeStore },
-                        store { platformStore }
+                        store { contextStore }
                     )
                 )
             )

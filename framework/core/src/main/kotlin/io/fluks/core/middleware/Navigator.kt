@@ -1,17 +1,15 @@
 package io.fluks.core.middleware
 
-import io.fluks.common.Action
-import io.fluks.common.Event
-import io.fluks.common.dynamicCast
-import io.fluks.common.unsafe
+import io.fluks.common.*
 import io.fluks.core.*
+import java.lang.ref.WeakReference
 
 interface Finishable {
     fun finish()
 }
 
 class Navigator<Context : Any>(
-    private val store: Store<Platform.Effect, Platform.State<Context>>
+    private val store: Store<Platform.Effect, State<Context>>
 ) :
     AbstractMiddleware<Action.Navigate<Context>>() {
 
@@ -29,5 +27,18 @@ class Navigator<Context : Any>(
                 }
             }
         } ?: Event.Unhandled
+    }
+
+
+    data class State<Context>(
+        val topContextRef: WeakReference<Context>
+    ) : Reduce<Platform.Effect, State<Context>> {
+
+        val topContext get() = topContextRef.get()
+
+        override fun invoke(effect: Platform.Effect) = when (effect) {
+            is Platform.OnTop<*> -> copy(topContextRef = effect.unsafe<Platform.OnTop<Context>>().context)
+            else -> null
+        }
     }
 }
