@@ -18,4 +18,7 @@ interface UI {
         val disposable: Disposable
         fun DataBinding.bind()
     }
+    interface Finishable {
+        fun finish()
+    }
 }

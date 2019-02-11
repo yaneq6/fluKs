@@ -1,12 +1,11 @@
 package io.fluks.core.middleware
 
 import io.fluks.common.*
-import io.fluks.core.*
+import io.fluks.core.AbstractMiddleware
+import io.fluks.core.Middleware
+import io.fluks.core.Reduce
+import io.fluks.core.Store
 import java.lang.ref.WeakReference
-
-interface Finishable {
-    fun finish()
-}
 
 class Navigator<Context : Any>(
     private val store: Store<Platform.Effect, State<Context>>
@@ -22,7 +21,7 @@ class Navigator<Context : Any>(
             record.event.run { unsafe<Action.Navigate<Any>>() }.run {
                 context.run {
                     navigate()
-                    if (finishCurrent) dynamicCast<Finishable>().finish()
+                    if (finishCurrent && this is UI.Finishable) finish()
                     Event.Success
                 }
             }

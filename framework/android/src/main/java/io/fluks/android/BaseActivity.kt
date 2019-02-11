@@ -11,8 +11,6 @@ import android.view.View
 import android.widget.ProgressBar
 import io.fluks.android.databinding.DataBindingDelegate
 import io.fluks.common.*
-import io.fluks.common.Platform
-import io.fluks.core.middleware.Finishable
 import timber.log.Timber
 import java.lang.ref.WeakReference
 
@@ -22,7 +20,7 @@ abstract class BaseActivity<DataBinding, Component> :
     DataBindingDelegate<DataBinding>,
     Depends<Component>,
     DispatchDelegate<Event>,
-    Finishable
+    UI.Finishable
 
     where DataBinding : ViewDataBinding,
           Component : Dispatch.Component,
