@@ -9,7 +9,7 @@ object Start {
 
     interface Component :
         Session.Component,
-        Platform.State.Component {
+        Platform.Component {
         val model: StartModel
     }
 

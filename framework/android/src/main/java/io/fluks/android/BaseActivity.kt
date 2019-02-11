@@ -20,11 +20,7 @@ import io.fluks.di.android.lazyDi
 import timber.log.Timber
 import java.lang.ref.WeakReference
 
-abstract class BaseActivity<
-    DataBinding,
-    ViewModel : Model,
-    State : Reduce<*, State>,
-    Component> :
+abstract class BaseActivity<DataBinding, Component> :
 
     AppCompatActivity(),
     DataBindingDelegate<DataBinding>,
@@ -34,14 +30,13 @@ abstract class BaseActivity<
 
     where DataBinding : ViewDataBinding,
           Component : Dispatcher.Component,
-          Component : Platform.Component<DataBinding, ViewModel, State>,
+          Component : UI.Component<DataBinding>,
           Component : BaseActivity.Component {
 
     final override val containerView: View? get() = binding.root
     override val dispatch: Dispatch<Event> get() = component.dispatcher
 
     val binding by lazyDi { setBindingView(layoutId) }
-    private val viewModel by lazyDi { viewModel }
 
     val toolbar: Toolbar? get() = findViewById(R.id.toolbar)
     val progress: ProgressBar? get() = findViewById(R.id.progress)
@@ -53,8 +48,7 @@ abstract class BaseActivity<
         binding
         setSupportActionBar(toolbar)
         di {
-            viewModel.init()
-            binding.bind(viewModel)
+            binding.bind()
             intent.event?.let { dispatch(it) }
             initDebugDrawer()
         }
@@ -73,7 +67,7 @@ abstract class BaseActivity<
 
     override fun onDestroy() {
         binding.unbind()
-        viewModel.dispose()
+        component.disposable.dispose()
         super.onDestroy()
     }
 

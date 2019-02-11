@@ -11,15 +11,9 @@ import io.fluks.databinding.SchemeBinding
 import io.fluks.di.android.createDi
 import io.fluks.di.android.dependencies
 import io.fluks.di.android.lazyDi
-import io.fluks.feature.scheme.Scheme
 import kotlinx.android.synthetic.main.scheme.*
 
-class SchemeActivity :
-    BaseActivity<
-        SchemeBinding,
-        SchemeViewModel,
-        Scheme.State,
-        SchemeUI.Component>() {
+class SchemeActivity : BaseActivity<SchemeBinding, SchemeUI.Component>() {
 
     override val component: SchemeUI.Component by createDi {
         SchemeUI.Module(

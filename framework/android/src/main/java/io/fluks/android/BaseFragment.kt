@@ -6,20 +6,17 @@ import android.support.v4.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import io.fluks.common.android.getSerializable
-import io.reactivex.disposables.Disposable
 import io.fluks.android.databinding.DataBindingDelegate
+import io.fluks.common.android.getSerializable
+import io.fluks.core.Event
+import io.fluks.core.UI
 import io.fluks.di.Depends
 import io.fluks.di.android.di
-import io.fluks.core.Event
-import io.fluks.core.Platform
-import io.fluks.core.Reduce
+import io.reactivex.disposables.Disposable
 
 abstract class BaseFragment<
     DataBinding : ViewDataBinding,
-    ViewModel,
-    State: Reduce<*, State>,
-    Component: Platform.Component<DataBinding, ViewModel, State>> :
+    Component: UI.Component<DataBinding>> :
 
     Fragment(),
     DataBindingDelegate<DataBinding>,
@@ -44,7 +41,7 @@ abstract class BaseFragment<
         binding
         di {
             savedInstanceState?.getSerializable<Event>("event") // TODO
-            bind(binding, viewModel)
+            binding.bind()
         }
     }
 

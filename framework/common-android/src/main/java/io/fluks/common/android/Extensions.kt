@@ -16,6 +16,7 @@ val LayoutContainer.applicationContext get() = context?.applicationContext
 
 @Suppress("EXTENSION_SHADOWED_BY_MEMBER")
 inline fun <reified T> Bundle.getSerializable(key: String) : T? = getSerializable(key) as? T
+@Suppress("EXTENSION_SHADOWED_BY_MEMBER")
 inline fun <reified T> Intent.getSerializableExtra(name: String) : T? = getSerializableExtra(name) as? T
 
 

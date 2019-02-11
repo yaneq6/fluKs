@@ -2,35 +2,35 @@ package io.fluks.feature.login.view
 
 import io.fluks.App
 import io.fluks.R
-import io.fluks.core.Platform
+import io.fluks.android.BaseActivity
+import io.fluks.core.UI
+import io.fluks.databinding.LoginBinding
 import io.fluks.di.provide
 import io.fluks.di.provider.weakSingleton
-import io.fluks.core.Store
-import io.fluks.databinding.LoginBinding
-import io.fluks.feature.session.Session
 
 object LoginUI {
 
     interface Component :
-        App.Component,
-        Platform.Component<LoginBinding, LoginViewModel, Session.State>
+        UI.Component<LoginBinding>,
+        BaseActivity.Component
 
     class Module(
         app: App.Component
     ) : Component,
         App.Component by app {
 
-        override val store: Store<Session.Effect, Session.State> get() = sessionStore
 
         override val layoutId = R.layout.login
 
-        override val bind = LoginBinding::setModel
-
-        override val viewModel by provide(weakSingleton()) {
+        override val disposable by provide(weakSingleton()) {
             LoginViewModel(
                 dispatch = dispatcher,
                 store = sessionStore
             )
+        }
+
+        override fun LoginBinding.bind() {
+            model = disposable
         }
     }
 }
