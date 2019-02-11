@@ -5,7 +5,7 @@ group = 'com.github.yaneq6'
 dependencies {
     implementation dep.kotlin
     testImplementation dep.test
-    implementation project(':framework:base')
+    api project(':framework:base')
 }
 sourceCompatibility = "1.8"
 targetCompatibility = "1.8"

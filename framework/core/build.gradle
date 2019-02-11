@@ -4,9 +4,8 @@ apply plugin: 'maven'
 group = 'com.github.yaneq6'
 dependencies {
     implementation dep.kotlin
-    implementation dep.gson
     testImplementation dep.test
-    api dep.rxJava
+    api dep.gson
     api project(":framework:base")
 }
 sourceCompatibility = "1.8"

@@ -17,6 +17,5 @@ android {
 }
 dependencies {
     implementation dep.kotlin
-    implementation dep.gson
     api project(":framework:core")
 }
