@@ -2,9 +2,9 @@ package io.fluks
 
 import android.os.Bundle
 import android.support.v7.app.AppCompatActivity
-import io.fluks.core.Dispatch
-import io.fluks.core.DispatchDelegate
-import io.fluks.core.Event
+import io.fluks.common.Dispatch
+import io.fluks.common.DispatchDelegate
+import io.fluks.common.Event
 import io.fluks.core.Platform
 import io.fluks.common.weak
 import io.fluks.common.Depends
@@ -23,7 +23,7 @@ class StartActivity :
         )
     }
 
-    override val dispatch: Dispatch<Event> by lazyDi { dispatcher }
+    override val dispatch: Dispatch<Event> by lazyDi { dispatch }
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)

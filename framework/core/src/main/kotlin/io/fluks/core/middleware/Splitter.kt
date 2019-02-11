@@ -2,7 +2,7 @@ package io.fluks.core.middleware
 
 import io.reactivex.disposables.Disposable
 import io.fluks.core.AbstractMiddleware
-import io.fluks.core.Event
+import io.fluks.common.Event
 import io.fluks.core.Middleware
 
 class Splitter : AbstractMiddleware<Event.More>() {

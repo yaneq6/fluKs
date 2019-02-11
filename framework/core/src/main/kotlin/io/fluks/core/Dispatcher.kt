@@ -1,27 +1,11 @@
-@file:Suppress("MemberVisibilityCanBePrivate")
-
 package io.fluks.core
 
+import io.fluks.common.Dispatch
+import io.fluks.common.Event
 import io.fluks.common.unsafe
 import io.fluks.common.weak
 import io.reactivex.disposables.CompositeDisposable
 import io.reactivex.disposables.Disposable
-
-interface Dispatch<in T : Any> {
-    infix fun Any.dispatch(any: T?)
-
-    object Void : Dispatch<Any> {
-        override fun Any.dispatch(any: Any?) = Unit
-    }
-}
-
-interface DispatchDelegate<in E : Any> : Dispatch<E> {
-    val dispatch: Dispatch<E>
-
-    override fun Any.dispatch(any: E?) = dispatch.run {
-        this@dispatch.dispatch(any)
-    }
-}
 
 class Dispatcher(
     private val navigator: Middleware<*>,
@@ -76,8 +60,7 @@ class Dispatcher(
     override fun isDisposed() = disposable.isDisposed
     override fun dispose() = disposable.dispose()
 
-    interface Component {
-        val dispatcher: Dispatcher
+    interface Component : Dispatch.Component{
+        override val dispatch: Dispatcher
     }
 }
-

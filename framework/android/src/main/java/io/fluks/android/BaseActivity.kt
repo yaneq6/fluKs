@@ -10,13 +10,9 @@ import android.support.v7.widget.Toolbar
 import android.view.View
 import android.widget.ProgressBar
 import io.fluks.android.databinding.DataBindingDelegate
-import io.fluks.common.measure
-import io.fluks.common.weak
+import io.fluks.common.*
 import io.fluks.core.*
 import io.fluks.core.android.middleware.Finishable
-import io.fluks.common.Depends
-import io.fluks.common.di
-import io.fluks.common.lazyDi
 import timber.log.Timber
 import java.lang.ref.WeakReference
 
@@ -29,12 +25,12 @@ abstract class BaseActivity<DataBinding, Component> :
     Finishable
 
     where DataBinding : ViewDataBinding,
-          Component : Dispatcher.Component,
+          Component : Dispatch.Component,
           Component : UI.Component<DataBinding>,
           Component : BaseActivity.Component {
 
     final override val containerView: View? get() = binding.root
-    override val dispatch: Dispatch<Event> get() = component.dispatcher
+    override val dispatch: Dispatch<Event> get() = component.dispatch
 
     val binding by lazyDi { setBindingView(layoutId) }
 

@@ -29,7 +29,7 @@ object Domain {
         Session.Component by Session.Module(core),
         Scheme.Component by Scheme.Module(core) {
 
-        override val dispatcher by provide(singleton()) {
+        override val dispatch by provide(singleton()) {
 
             Dispatcher(
                 splitter = Splitter(),

@@ -22,7 +22,7 @@ object Start {
         override val model: StartModel by provide(weakSingleton()) {
             StartModel(
                 sessionStore = sessionStore,
-                dispatch = dispatcher
+                dispatch = dispatch
             )
         }
     }

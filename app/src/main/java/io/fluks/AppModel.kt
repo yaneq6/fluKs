@@ -1,5 +1,6 @@
 package io.fluks
 
+import io.fluks.common.Dispatch
 import io.fluks.core.*
 import io.reactivex.disposables.CompositeDisposable
 import io.reactivex.disposables.Disposable

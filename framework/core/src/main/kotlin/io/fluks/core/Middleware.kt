@@ -2,6 +2,7 @@
 
 package io.fluks.core
 
+import io.fluks.common.Event
 import io.fluks.common.WeakProvider
 import io.fluks.common.timestamp
 import io.reactivex.Observable

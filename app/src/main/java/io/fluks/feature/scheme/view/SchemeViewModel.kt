@@ -1,8 +1,8 @@
 package io.fluks.feature.scheme.view
 
 import android.databinding.ObservableField
-import io.fluks.core.Dispatch
-import io.fluks.core.Event
+import io.fluks.common.Dispatch
+import io.fluks.common.Event
 import io.fluks.core.Model
 import io.fluks.feature.session.action.SignOut
 

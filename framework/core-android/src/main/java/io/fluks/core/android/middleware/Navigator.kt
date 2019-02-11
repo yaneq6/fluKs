@@ -1,5 +1,6 @@
 package io.fluks.core.android.middleware
 
+import io.fluks.common.Event
 import io.fluks.common.dynamicCast
 import io.fluks.common.unsafe
 import io.fluks.core.*

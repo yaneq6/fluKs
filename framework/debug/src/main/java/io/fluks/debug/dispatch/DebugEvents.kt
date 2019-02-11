@@ -9,7 +9,7 @@ import com.google.gson.reflect.TypeToken
 import com.google.gson.stream.JsonReader
 import com.google.gson.stream.JsonWriter
 import io.fluks.core.CoreEffect
-import io.fluks.core.Event
+import io.fluks.common.Event
 import io.fluks.core.Reduce
 import io.fluks.core.StateHolder
 import timber.log.Timber

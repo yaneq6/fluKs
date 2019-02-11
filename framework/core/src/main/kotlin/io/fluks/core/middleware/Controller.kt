@@ -1,5 +1,6 @@
 package io.fluks.core.middleware
 
+import io.fluks.common.Event
 import io.fluks.core.*
 import io.reactivex.disposables.Disposable
 

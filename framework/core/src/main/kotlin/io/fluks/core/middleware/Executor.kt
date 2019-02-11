@@ -4,7 +4,7 @@ import io.reactivex.Scheduler
 import io.fluks.common.measure
 import io.fluks.core.AbstractMiddleware
 import io.fluks.core.Action
-import io.fluks.core.Event
+import io.fluks.common.Event
 import io.fluks.core.Middleware
 import kotlin.reflect.KClass
 

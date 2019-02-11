@@ -2,6 +2,7 @@ package io.fluks
 
 import android.content.Context
 import android.content.SharedPreferences
+import io.fluks.common.Event
 import io.fluks.common.weak
 import io.fluks.core.*
 import io.reactivex.Scheduler

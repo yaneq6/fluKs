@@ -3,16 +3,9 @@ package io.fluks.debug.dispatch
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import io.fluks.common.*
 import io.fluks.common.android.applicationContext
-import io.fluks.core.Dispatch
-import io.fluks.core.DispatchDelegate
-import io.fluks.core.Dispatcher
-import io.fluks.core.Event
 import io.fluks.debug.R
-import io.fluks.common.Depends
-import io.fluks.common.dependencies
-import io.fluks.common.di
-import io.fluks.common.lazyDi
 import io.palaima.debugdrawer.base.DebugModuleAdapter
 import kotlinx.android.extensions.LayoutContainer
 import kotlinx.android.synthetic.main.debug_dispatch.*
@@ -30,7 +23,7 @@ class DispatchDebug :
     }
 
     override val dispatch: Dispatch<Event> by lazyDi {
-        applicationContext!!.dependencies<Dispatcher.Component>().dispatcher
+        applicationContext!!.dependencies<Dispatch.Component>().dispatch
     }
 
     private val debugEvents get() = di { debugEvents }

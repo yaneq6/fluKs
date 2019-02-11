@@ -8,7 +8,7 @@ import android.view.View
 import android.view.ViewGroup
 import io.fluks.android.databinding.DataBindingDelegate
 import io.fluks.common.android.getSerializable
-import io.fluks.core.Event
+import io.fluks.common.Event
 import io.fluks.core.UI
 import io.fluks.common.Depends
 import io.fluks.common.di

@@ -24,7 +24,7 @@ object LoginUI {
 
         override val disposable by provide(weakSingleton()) {
             LoginViewModel(
-                dispatch = dispatcher,
+                dispatch = dispatch,
                 store = sessionStore
             )
         }

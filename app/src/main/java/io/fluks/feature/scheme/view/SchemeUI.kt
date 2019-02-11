@@ -37,7 +37,7 @@ object SchemeUI {
         override val viewModel: SchemeViewModel get() = disposable
 
         override val disposable by provide(weakSingleton()) {
-            SchemeViewModel(dispatcher)
+            SchemeViewModel(dispatch)
         }
 
         override fun SchemeBinding.bind() {

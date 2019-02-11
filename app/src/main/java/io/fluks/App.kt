@@ -53,7 +53,7 @@ class App : Application(), Depends<App.Component> {
         override val appModel by provide(singleton()) {
             AppModel(
                 sessionStore = sessionStore,
-                dispatch = dispatcher
+                dispatch = dispatch
             )
         }
 
@@ -79,7 +79,7 @@ class App : Application(), Depends<App.Component> {
         }
 
         private fun middleware() {
-            debug(dispatcher)
+            debug(dispatch)
         }
 
         private fun model() {
