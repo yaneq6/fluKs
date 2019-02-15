@@ -1,14 +1,12 @@
 package io.fluks.core.middleware
 
 import io.fluks.base.*
-import io.fluks.core.AbstractMiddleware
-import io.fluks.core.Middleware
-import io.fluks.core.Reduce
-import io.fluks.core.Store
+import io.fluks.core.*
 import java.lang.ref.WeakReference
 
 class Navigator<Context : Any>(
-    private val store: Store<Platform.Effect, State<Context>>
+    private val store: Store<Platform.Effect, State<Context>>,
+    private val getTime: GetTime
 ) :
     AbstractMiddleware<Action.Navigate<Context>>() {
 
@@ -16,7 +14,7 @@ class Navigator<Context : Any>(
         .map(this::execute)
         .subscribe(outputSubject::onNext)!!
 
-    private fun execute(record: Middleware.Record<Action.Navigate<Context>>) = record + let {
+    private fun execute(record: Middleware.Record<Action.Navigate<Context>>) = record + ((
         store.state.topContext?.let { context ->
             record.event.run { unsafe<Action.Navigate<Any>>() }.run {
                 context.run {
@@ -25,8 +23,7 @@ class Navigator<Context : Any>(
                     Event.Success
                 }
             }
-        } ?: Event.Unhandled
-    }
+        } ?: Event.Unhandled) to getTime())
 
 
     data class State<Context>(

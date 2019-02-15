@@ -11,6 +11,8 @@ import io.fluks.databinding.SchemeBinding
 import io.fluks.base.createDi
 import io.fluks.base.dependencies
 import io.fluks.base.lazyDi
+import io.fluks.feature.raw.view.RawActivity
+import io.reactivex.disposables.CompositeDisposable
 import kotlinx.android.synthetic.main.scheme.*
 
 class SchemeActivity : BaseActivity<SchemeBinding, SchemeUI.Component>() {
@@ -22,13 +24,16 @@ class SchemeActivity : BaseActivity<SchemeBinding, SchemeUI.Component>() {
         )
     }
 
-    private val disposable by lazyDi {
-        gestureObservable.onScale.subscribe { detector ->
-            plan.apply {
-                scaleX *= detector.scaleFactor
-                scaleY *= detector.scaleFactor
+    override val disposable by lazyDi {
+        CompositeDisposable(
+            super.disposable,
+            gestureObservable.onScale.subscribe { detector ->
+                plan.apply {
+                    scaleX *= detector.scaleFactor
+                    scaleY *= detector.scaleFactor
+                }
             }
-        }
+        )
     }
 
     override fun onCreateSafe(savedInstanceState: Bundle?) {
@@ -44,6 +49,7 @@ class SchemeActivity : BaseActivity<SchemeBinding, SchemeUI.Component>() {
     override fun onOptionsItemSelected(item: MenuItem): Boolean = component.viewModel.run {
         when (item.itemId) {
             R.id.logout -> logout()
+            R.id.done -> dispatch(RawActivity.Start())
             else -> null
         } != null
     }

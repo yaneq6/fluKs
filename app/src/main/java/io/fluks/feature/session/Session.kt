@@ -11,13 +11,15 @@ import io.fluks.core.Store
 import io.fluks.core.android.sharedPrefsRepository
 import io.fluks.di.provide
 import io.fluks.di.provider.singleton
+import io.fluks.feature.login.view.LoginUI
+import io.fluks.feature.scheme.view.SchemeUI
 import io.fluks.feature.session.action.SignIn
 import io.fluks.feature.session.action.SignOut
 
 object Session {
 
     interface Effect : BaseEffect
-    interface Async: Action.Async
+    interface Async : Action.Async
 
     data class State(
         val token: String? = null
@@ -35,8 +37,19 @@ object Session {
 
     class Interactor(
         val api: (Action) -> Event
-    ): AbstractInteractor<Async, Event> {
-        override fun invoke(action: Async) = api(action)
+    ) :
+        AbstractInteractor<Async, Event> {
+
+        override fun invoke(action: Async) = api(action).let { apiResult ->
+            Event.More(
+                apiResult,
+                when (apiResult) {
+                    is SignIn.Success -> SchemeUI.Navigate(finishCurrent = true)
+                    is SignOut.Success -> LoginUI.Navigate(finishCurrent = true)
+                    else -> null
+                }
+            )
+        }
     }
 
     interface Component {

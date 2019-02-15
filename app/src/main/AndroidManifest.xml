@@ -12,7 +12,9 @@
         android:theme="@style/AppTheme"
         android:name="io.fluks.App"
         tools:ignore="AllowBackup,GoogleAppIndexingWarning">
-        <activity android:name="io.fluks.Start$Activity">
+        <activity
+            android:name="io.fluks.Start$Activity"
+            android:theme="@style/SplashTheme">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN"/>
 
@@ -23,6 +25,7 @@
             android:name="io.fluks.feature.login.view.LoginActivity"
             android:label="Login" />
         <activity android:name="io.fluks.feature.scheme.view.SchemeActivity" />
+        <activity android:name=".feature.raw.view.RawActivity" />
     </application>
 
 </manifest>

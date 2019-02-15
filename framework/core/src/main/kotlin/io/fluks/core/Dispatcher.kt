@@ -1,10 +1,11 @@
 package io.fluks.core
 
 import io.fluks.base.*
-import io.reactivex.disposables.CompositeDisposable
 import io.reactivex.disposables.Disposable
+import io.reactivex.subjects.PublishSubject
 
 class Dispatcher(
+    private val getTime: GetTime,
     private val navigator: Middleware<*>,
     private val async: Middleware<Action.Async>,
     private val stores: Middleware<Effect>,
@@ -20,29 +21,15 @@ class Dispatcher(
         splitter
     )
 
-    val input = middlewares.merge { input }
-    val output = middlewares.merge { output.filter { record -> !record.hasError } }
-    val error = middlewares.merge { output.filter { record -> record.hasError } }
+    private val inputSubject = PublishSubject.create<Middleware.Record<Event>>()
 
-    private val disposable = CompositeDisposable(
-        input.subscribe { record ->
-            logDispatch(record)
-        },
-        output.subscribe { record ->
-            dispatchRecord(record)
-            logSuccess(record)
-        }
-    )
+    val output = middlewares
+        .merge { output }
+        .mergeWith(inputSubject)
+        .share()!!
 
-    override fun Any.dispatch(any: Event?) = any?.let { event ->
-        dispatchRecord(
-            Middleware.Record(
-                context = weak(),
-                event = event
-            )
-        )
-    } ?: logNullEvent()
-
+    val disposable = output
+        .subscribe { record -> dispatchRecord(record) }!!
 
     private fun dispatchRecord(record: Middleware.Record<Event>) {
         when (record.event) {
@@ -54,10 +41,23 @@ class Dispatcher(
         }?.invoke(record.unsafe())
     }
 
+    override fun Any.dispatch(any: Event?) {
+        any?.let { event ->
+            Middleware.Record(
+                context = weak(),
+                event = event,
+                timestamp = getTime()
+            ).also { record ->
+                logDispatch(record)
+                inputSubject.onNext(record)
+            }
+        } ?: logNullEvent()
+    }
+
     override fun isDisposed() = disposable.isDisposed
     override fun dispose() = disposable.dispose()
 
-    interface Component : Dispatch.Component{
+    interface Component : Dispatch.Component, DispatchDelegate<Event> {
         override val dispatch: Dispatcher
     }
 }

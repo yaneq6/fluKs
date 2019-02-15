@@ -1,8 +1,7 @@
 package io.fluks
 
-import io.fluks.core.Dispatcher
-import io.fluks.core.interactor
-import io.fluks.core.store
+import io.fluks.base.Event
+import io.fluks.core.*
 import io.fluks.feature.scheme.Scheme
 import io.fluks.feature.session.Session
 import io.fluks.core.middleware.Controller
@@ -11,6 +10,7 @@ import io.fluks.core.middleware.Navigator
 import io.fluks.core.middleware.Splitter
 import io.fluks.di.provide
 import io.fluks.di.provider.singleton
+import io.reactivex.Observable
 
 object Domain {
 
@@ -18,7 +18,11 @@ object Domain {
         Core.Component,
         Dispatcher.Component,
         Session.Component,
-        Scheme.Component
+        Scheme.Component {
+
+        val eventsManager: EventFilters
+        val eventsLifecycle: Observable<Pair<Event, Boolean>>
+    }
 
 
     class Module(
@@ -29,16 +33,28 @@ object Domain {
         Session.Component by Session.Module(core),
         Scheme.Component by Scheme.Module(core) {
 
+        override val eventsLifecycle get() = eventsManager.loading.observable()
+
+        override val eventsManager by provide(singleton()) {
+            EventFilters(
+                records = dispatch.output
+            )
+        }
+
         override val dispatch by provide(singleton()) {
 
             Dispatcher(
+                getTime = getTime,
+
                 splitter = Splitter(),
 
                 navigator = Navigator(
+                    getTime = getTime,
                     store = contextStore
                 ),
 
                 async = Executor(
+                    getTime = getTime,
                     mainScheduler = mainScheduler,
                     backgroundScheduler = backgroundScheduler,
                     interactors = mapOf(
@@ -47,6 +63,7 @@ object Domain {
                 ),
 
                 stores = Controller(
+                    getTime = getTime,
                     storeProviders = listOf(
                         store { sessionStore },
                         store { schemeStore },

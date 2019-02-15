@@ -6,6 +6,7 @@ import io.fluks.base.Action
 import io.fluks.base.Event
 import io.fluks.base.Platform
 import io.fluks.base.weak
+import io.fluks.core.GetTime
 import io.fluks.core.SimpleStateHolder
 import io.fluks.core.Store
 import io.fluks.core.middleware.Navigator
@@ -34,6 +35,8 @@ object Core {
         val mainScheduler: Scheduler
 
         val backgroundScheduler: Scheduler
+
+        val getTime: GetTime
     }
 
     class Module(
@@ -47,13 +50,7 @@ object Core {
 
         override val backgroundScheduler = Schedulers.io()
 
-        override val api: (Action) -> Event = { action ->
-            when (action) {
-                is SignIn -> SignIn.Success("token")
-                is SignOut -> SignOut.Success()
-                else -> throw IllegalArgumentException()
-            }
-        }
+        override val api = FAKE_API_CLIENT
 
         override val sharedPreferences by provide(singleton()) {
             context.getSharedPreferences(Core::class.qualifiedName, Context.MODE_PRIVATE)!!
@@ -61,6 +58,17 @@ object Core {
 
         override val contextStore by provide(singleton()) {
             Store(SimpleStateHolder(Navigator.State(context.weak())))
+        }
+
+        override val getTime: GetTime = System::currentTimeMillis
+    }
+
+    val FAKE_API_CLIENT: (Action) -> Event = { action ->
+        Thread.sleep(1000)
+        when (action) {
+            is SignIn -> SignIn.Success("token")
+            is SignOut -> SignOut.Success()
+            else -> throw IllegalArgumentException()
         }
     }
 }

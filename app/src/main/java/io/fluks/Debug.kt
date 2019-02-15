@@ -62,9 +62,10 @@ object Debug {
         }
 
         override val debug: Dispatcher.() -> Disposable by create(multiton()) { dispatcher ->
-            dispatcher.input
+            dispatcher.output
                 .observeOn(Schedulers.newThread())
                 .filter { it.event !is Platform.OnTop<*> }
+                .filter { it.event !is Event.Success }
                 .map { DebugEvents.Add(it.event) }
                 .subscribe { debugEventsStore(it) }!!
         }
@@ -82,4 +83,3 @@ object Debug {
         }
     }
 }
-

@@ -4,6 +4,12 @@
     tools:context=".feature.scheme.view.SchemeActivity">
 
     <item
+        android:id="@+id/done"
+        android:title="@string/scheme_action_logout"
+        android:icon="@drawable/ic_done_white_24dp"
+        android:showAsAction="always"
+        tools:ignore="AppCompatResource" />
+    <item
         android:id="@+id/logout"
         android:title="@string/scheme_action_logout"
         android:icon="@drawable/ic_exit_to_app_white_24dp"

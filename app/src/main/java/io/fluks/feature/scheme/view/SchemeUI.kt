@@ -1,9 +1,12 @@
 package io.fluks.feature.scheme.view
 
+import android.content.Context
+import android.content.Intent
 import android.view.GestureDetector
 import android.view.View
 import io.fluks.App
 import io.fluks.R
+import io.fluks.base.Action
 import io.fluks.base.android.BaseActivity
 import io.fluks.base.android.GetContext
 import io.fluks.base.UI
@@ -63,6 +66,16 @@ object SchemeUI {
 
         override val gestureObservable by provide(singleton()) {
             GestureObservableListener()
+        }
+    }
+
+    data class Navigate(
+        override val finishCurrent: Boolean = false
+    ) : Action.Navigate<Context> {
+        override fun Context.navigate() {
+            startActivity(
+                Intent(this, SchemeActivity::class.java)
+            )
         }
     }
 }

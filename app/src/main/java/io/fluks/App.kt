@@ -1,27 +1,23 @@
 package io.fluks
 
 import android.app.Application
-import android.support.v7.app.AppCompatDelegate
-import com.squareup.leakcanary.LeakCanary
 import io.fluks.base.FluksLog
 import io.fluks.base.android.FluksLogTimber
 import io.fluks.base.measure
 import io.fluks.di.Dependencies
 import io.fluks.base.Depends
 import io.fluks.base.createDi
-import io.fluks.di.provide
-import io.fluks.di.provider.singleton
-import io.palaima.debugdrawer.timber.data.LumberYard
-import timber.log.Timber
 
 class App : Application(), Depends<App.Component> {
 
     override val component by createDi {
         Module(
-            app = this,
-            data = Core.Module(
+            core = Core.Module(
                 context = this,
                 dependencies = Dependencies()
+            ),
+            init = Init.Module(
+                app = this
             )
         )
     }
@@ -29,64 +25,32 @@ class App : Application(), Depends<App.Component> {
     override fun onCreate() {
         super.onCreate()
         FluksLog.init(FluksLogTimber)
-        Timber.d("onCreate")
     }
 
     interface Component :
         Domain.Component,
-        Debug.Component {
+        Debug.Component
 
-        val appModel: AppModel
-    }
-
-
-    private class Module(
-        private val app: Application,
-        data: Core.Component
+    class Module(
+        core: Core.Component,
+        init: Init.Component
     ) :
         Component,
-        Domain.Component by Domain.Module(data),
-        Debug.Component by Debug.Module(data) {
-
-        override val appModel by provide(singleton()) {
-            AppModel(
-                sessionStore = sessionStore,
-                dispatch = dispatch
-            )
-        }
+        Domain.Component by Domain.Module(core),
+        Debug.Component by Debug.Module(core),
+        Init.Component by init {
 
         init {
             measure("init App.Module") {
                 leakCanary()
                 logging()
                 dispatch()
-                model()
                 vectorDrawables()
             }
-        }
-
-        private fun leakCanary() {
-            if (!LeakCanary.isInAnalyzerProcess(app)) LeakCanary.install(app)
-        }
-
-        private fun logging() {
-            Timber.plant(
-                LumberYard.getInstance(app).apply(LumberYard::cleanUp).tree(),
-                Timber.DebugTree()
-            )
         }
 
         private fun dispatch() {
             debug(dispatch)
         }
-
-        private fun model() {
-            appModel.init()
-        }
-
-        private fun vectorDrawables() {
-            AppCompatDelegate.setCompatVectorFromResourcesEnabled(true)
-        }
     }
 }
-

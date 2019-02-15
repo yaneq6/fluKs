@@ -1,9 +1,13 @@
 package io.fluks.feature.login.view
 
+import android.app.Activity
+import android.content.Context
+import android.content.Intent
 import io.fluks.App
 import io.fluks.R
-import io.fluks.base.android.BaseActivity
+import io.fluks.base.Action
 import io.fluks.base.UI
+import io.fluks.base.android.BaseActivity
 import io.fluks.databinding.LoginBinding
 import io.fluks.di.provide
 import io.fluks.di.provider.weakSingleton
@@ -31,6 +35,19 @@ object LoginUI {
 
         override fun LoginBinding.bind() {
             model = disposable
+        }
+    }
+
+
+    data class Navigate(
+        override val finishCurrent: Boolean = false
+    ) : Action.Navigate<Context> {
+
+        override fun Context.navigate() {
+
+            startActivity(Intent(this, LoginActivity::class.java))
+
+            if (finishCurrent && this is Activity) finish()
         }
     }
 }

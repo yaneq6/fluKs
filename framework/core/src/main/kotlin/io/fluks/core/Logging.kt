@@ -23,16 +23,16 @@ fun Any.logDispatch(record: Middleware.Record<Event>) = tag {
     }
 }
 
-fun Any.logSuccess(record: Middleware.Record<Event>) =
-    record.takeIf { it.event is Event.Success }?.run {
+fun Any.logFinish(record: Middleware.Record<Event>) =
+    record.takeIf { it.isFinished }?.run {
         log(
             level = Log.DEBUG,
-            message = "successful in: ${timestamp - predecessors.last().second}ms\n ${predecessors
+            message = "${event::class.innerName} in: ${timestamp - predecessors.last().second}ms\n ${predecessors
                 .takeUnless { it.isEmpty() }
                 ?.map { it.first::class.innerName }
                 ?.reduce { acc, s -> "$acc -> $s" }
             }",
-            tag = this@logSuccess
+            tag = this@logFinish
         )
     }
 

@@ -1,10 +1,8 @@
-package io.fluks.util.android
+package io.fluks.base.android
 
-import io.fluks.base.android.onPropertyChangedCallback
 import io.fluks.base.android.databinding.ObservableProperty
 import org.junit.Assert.assertEquals
 import org.junit.Test
-
 
 class ExtensionsKtTest {
 
@@ -22,7 +20,6 @@ class ExtensionsKtTest {
             set("")
             set(null)
         }
-
 
         assertEquals(message, result)
     }

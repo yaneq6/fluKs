@@ -14,7 +14,7 @@ interface Event : Serializable {
     ) : Event
 
     data class More(val events: List<Event>): Event {
-        constructor(vararg events: Event) : this(events.toList())
+        constructor(vararg events: Event?) : this(events.filterNotNull())
     }
 }
 
@@ -29,7 +29,7 @@ interface Action : Event {
 
         fun Context.navigate()
 
-        val finishCurrent get() = true
+        val finishCurrent get() = false
     }
 }
 

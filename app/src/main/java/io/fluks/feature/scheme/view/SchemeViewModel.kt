@@ -1,6 +1,5 @@
 package io.fluks.feature.scheme.view
 
-import android.databinding.ObservableField
 import io.fluks.base.Dispatch
 import io.fluks.base.Event
 import io.fluks.core.Model
@@ -11,8 +10,6 @@ class SchemeViewModel(
 ) :
     Model(),
     Dispatch<Event> by dispatch {
-
-    val field = ObservableField<String>()
 
     fun logout() = dispatch(SignOut())
 }

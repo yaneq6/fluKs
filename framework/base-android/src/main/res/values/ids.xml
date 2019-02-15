@@ -2,4 +2,5 @@
 <resources>
     <item name="toolbar" type="id" />
     <item name="progress" type="id" />
+    <item name="progressBarLayout" type="id" />
 </resources>
