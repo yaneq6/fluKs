@@ -19,3 +19,13 @@ dependencies {
     implementation dep.kotlin
     api project(":framework:core")
 }
+
+task androidSourcesJar(type: Jar) {
+    classifier = 'sources'
+    from android.sourceSets.main.java.srcDirs
+}
+
+artifacts {
+//    archives packageReleaseJar
+    archives androidSourcesJar
+}

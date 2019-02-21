@@ -24,3 +24,13 @@ dependencies {
     api dep.timber
     api project(':framework:base')
 }
+
+task androidSourcesJar(type: Jar) {
+    classifier = 'sources'
+    from android.sourceSets.main.java.srcDirs
+}
+
+artifacts {
+//    archives packageReleaseJar
+    archives androidSourcesJar
+}
