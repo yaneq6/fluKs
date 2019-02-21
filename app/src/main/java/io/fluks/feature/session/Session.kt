@@ -4,7 +4,7 @@ import io.fluks.Core
 import io.fluks.base.Action
 import io.fluks.base.BaseEffect
 import io.fluks.base.Event
-import io.fluks.core.AbstractInteractor
+import io.fluks.core.BaseInteractor
 import io.fluks.core.Reduce
 import io.fluks.core.SimpleStateHolder
 import io.fluks.core.Store
@@ -38,7 +38,7 @@ object Session {
     class Interactor(
         val api: (Action) -> Event
     ) :
-        AbstractInteractor<Async, Event> {
+        BaseInteractor<Async, Event> {
 
         override fun invoke(action: Async) = api(action).let { apiResult ->
             Event.More(

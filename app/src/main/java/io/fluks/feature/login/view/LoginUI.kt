@@ -33,7 +33,7 @@ object LoginUI {
             )
         }
 
-        override fun LoginBinding.bind() {
+        override fun LoginBinding.init() {
             model = disposable
         }
     }

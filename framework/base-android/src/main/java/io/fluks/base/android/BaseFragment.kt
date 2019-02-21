@@ -40,7 +40,7 @@ abstract class BaseFragment<
         binding
         di {
             savedInstanceState?.getSerializable<Event>("event") // TODO
-            binding.bind()
+            binding.init()
         }
     }
 

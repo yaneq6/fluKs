@@ -18,7 +18,8 @@ interface UI {
         val layoutId: Int
         val disposable: Disposable
         val eventsLifecycle: Observable<Pair<Event, Boolean>>
-        fun DataBinding.bind()
+        fun DataBinding.init()
+        fun DataBinding.destroy() {}
     }
     interface Finishable {
         fun finish()

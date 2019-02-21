@@ -57,7 +57,7 @@ abstract class BaseActivity<DataBinding, Component> :
         disposable
         setSupportActionBar(toolbar)
         di {
-            binding.bind()
+            binding.init()
             intent.event?.let { dispatch(it) }
             initDebugDrawer()
         }
@@ -81,7 +81,10 @@ abstract class BaseActivity<DataBinding, Component> :
     override fun onDestroy() {
         disposable.dispose()
         binding.unbind()
-        component.disposable.dispose()
+        di {
+            disposable.dispose()
+            binding.destroy()
+        }
         super.onDestroy()
     }
 

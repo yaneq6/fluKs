@@ -43,7 +43,7 @@ object SchemeUI {
             SchemeViewModel(dispatch)
         }
 
-        override fun SchemeBinding.bind() {
+        override fun SchemeBinding.init() {
             model = disposable
         }
 

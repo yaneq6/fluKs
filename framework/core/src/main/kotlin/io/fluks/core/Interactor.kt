@@ -13,6 +13,4 @@ inline fun <reified A : Action.Async> interactor(
 
 interface Interactor<in A : Action, out E : Event> : (A) -> E
 
-interface AbstractInteractor<in A : Action, out E : Event> : Interactor<A, E> {
-    override operator fun invoke(action: A): E
-}
+typealias BaseInteractor<A, E> = Interactor<A, E>
