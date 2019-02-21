@@ -2,15 +2,18 @@ package io.fluks.core.middleware
 
 import io.fluks.base.*
 import io.fluks.core.*
+import io.reactivex.Scheduler
 import java.lang.ref.WeakReference
 
 class Navigator<Context : Any>(
     private val store: Store<Platform.Effect, State<Context>>,
-    private val getTime: GetTime
+    private val getTime: GetTime,
+    scheduler: Scheduler
 ) :
     AbstractMiddleware<Action.Navigate<Context>>() {
 
     override val disposable = input
+        .observeOn(scheduler)
         .map(this::execute)
         .subscribe(outputSubject::onNext)!!
 

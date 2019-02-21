@@ -49,6 +49,7 @@ object Domain {
                 splitter = Splitter(),
 
                 navigator = Navigator(
+                    scheduler = mainScheduler,
                     getTime = getTime,
                     store = contextStore
                 ),
