@@ -59,6 +59,7 @@ interface Middleware<A : Event> : Disposable {
         val isFinished get() = (success or failure) and !isStarting
         val error get() = (event as? Event.Error)?.throwable
         val rootEvent get() = predecessors.lastOrNull()?.first ?: event
+        val startedAt get() = predecessors.lastOrNull()?.second ?: timestamp
     }
 }
 

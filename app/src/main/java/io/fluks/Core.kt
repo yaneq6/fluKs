@@ -64,7 +64,7 @@ object Core {
     }
 
     val FAKE_API_CLIENT: (Action) -> Event = { action ->
-        Thread.sleep(1000)
+        Thread.sleep(3000)
         when (action) {
             is SignIn -> SignIn.Success("token")
             is SignOut -> SignOut.Success()

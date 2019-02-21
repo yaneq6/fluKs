@@ -23,28 +23,29 @@ private class LoadingManager(
     vararg inputs: Observable<Middleware.Record<Event>>
 ) : ObservableSource<Pair<Event, Boolean>> {
 
-    private val events = Vector<Event>()
+    private val events = Vector<Pair<Event, Long>>()
 
     private val output = Observable
         .merge(inputs.toList())
         .map { it.handle() }
         .filter { it.first != None }
+        .share()
 
     override fun subscribe(observer: Observer<in Pair<Event, Boolean>>) {
         output.subscribe(observer)
     }
 
     private fun Middleware.Record<Event>.handle(): Pair<Event, Boolean> = when {
-        isStarting && onStart(rootEvent) -> true
-        isFinished && onFinish(rootEvent) -> false
+        isStarting && onStart(rootEvent to startedAt) -> true
+        isFinished && onFinish(rootEvent to startedAt) -> false
         else -> null
     }?.let { status ->
         rootEvent to status
     } ?: None to false
 
-    private fun onStart(event: Event) = events.add(event)
+    private fun onStart(event: Pair<Event, Long>) = events.add(event)
 
-    private fun onFinish(event: Event) = events.remove(event) && events.isEmpty()
+    private fun onFinish(event: Pair<Event, Long>) = events.remove(event) && events.isEmpty()
 
     private object None : Event
 }
