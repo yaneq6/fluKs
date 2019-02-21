@@ -17,7 +17,7 @@ class InputObservable(
     fun validate() = error.run {
         value = null
         value = validate(text.value)
-        value != null
+        value == null
     }
 }
 
