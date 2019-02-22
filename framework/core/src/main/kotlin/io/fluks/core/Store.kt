@@ -11,7 +11,10 @@ import io.reactivex.subjects.PublishSubject
 fun <E : Effect, State : Any> Store<E, State>.subscribe(onNext: State.(Effect) -> Unit) =
     observable().subscribe { onNext(it.first, it.second) }!!
 
-fun <T> ObservableSource<T>.observable() = Observable.unsafeCreate(this)!!
+fun <T> ObservableSource<T>.observable() = when(this) {
+    is Observable<*> -> this as Observable<T>
+    else -> Observable.unsafeCreate(this)
+}!!
 
 interface Store<E : Effect, State : Any> :
     ObservableSource<Pair<State, Effect>> {

@@ -9,7 +9,7 @@ import java.util.*
 class EventFilters(
     val records: Observable<Middleware.Record<Event>>
 ) {
-    val lifecycle: ObservableSource<Event.Lifecycle> = records.compose(::EventLifecycleSource)
+    val lifecycle: Observable<Event.Lifecycle> = records.compose(::EventLifecycleSource)
 
     private val normalized = records
         .filter { it.event !is Event.More }
@@ -19,16 +19,15 @@ class EventFilters(
 }
 
 private class EventLifecycleSource(
-    inputs: Observable<Middleware.Record<Event>>
+    input: Observable<Middleware.Record<Event>>
 ) : ObservableSource<Event.Lifecycle> {
 
     private val events = Vector<Pair<Event, Long>>()
 
-    private val output = inputs
+    private val output = input
         .map { it.handle() }
         .filter { it != Event.Lifecycle.Empty }
-        .share()
-        .publish()!!
+        .share()!!
 
     override fun subscribe(observer: Observer<in Event.Lifecycle>) {
         output.subscribe(observer)
@@ -40,7 +39,7 @@ private class EventLifecycleSource(
         else -> null
     }?.let { status ->
         Event.Lifecycle(
-            event = event,
+            event = rootEvent,
             isRunning = status,
             startedAt = startedAt
         )

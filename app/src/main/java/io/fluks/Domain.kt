@@ -33,7 +33,7 @@ object Domain {
         Session.Component by Session.Module(core),
         Scheme.Component by Scheme.Module(core) {
 
-        override val eventsLifecycle get() = eventsManager.lifecycle.observable()
+        override val eventsLifecycle get() = eventsManager.lifecycle
 
         override val eventsManager by provide(singleton()) {
             EventFilters(
