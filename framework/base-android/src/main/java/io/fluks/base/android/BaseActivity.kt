@@ -24,7 +24,6 @@ abstract class BaseActivity<DataBinding, Component> :
     UI.Finishable
 
     where DataBinding : ViewDataBinding,
-          Component : Dispatch.Component,
           Component : UI.Component<DataBinding>,
           Component : BaseActivity.Component {
 
@@ -45,7 +44,7 @@ abstract class BaseActivity<DataBinding, Component> :
     }
     open val disposable by lazyDi {
         eventsLifecycle.subscribe {
-            setProgressVisibility(it.second)
+            setProgressVisibility(it.isRunning)
         }!!
     }
 

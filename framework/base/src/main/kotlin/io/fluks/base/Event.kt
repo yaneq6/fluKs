@@ -16,6 +16,20 @@ interface Event : Serializable {
     data class More(val events: List<Event>): Event {
         constructor(vararg events: Event?) : this(events.filterNotNull())
     }
+
+    data class Lifecycle(
+        val event: Event,
+        val startedAt: Long,
+        val isRunning: Boolean
+    ) {
+        companion object {
+            val Empty = Lifecycle(
+                event = Event.Unhandled,
+                isRunning = false,
+                startedAt = 0
+            )
+        }
+    }
 }
 
 

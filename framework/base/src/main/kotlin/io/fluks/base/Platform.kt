@@ -17,7 +17,7 @@ interface UI {
     interface Component<DataBinding> : Dispatch.Component {
         val layoutId: Int
         val disposable: Disposable
-        val eventsLifecycle: Observable<Pair<Event, Boolean>>
+        val eventsLifecycle: Observable<Event.Lifecycle>
         fun DataBinding.init()
         fun DataBinding.destroy() {}
     }

@@ -13,8 +13,8 @@ class EventFiltersTest {
 
     @Test
     fun getLoading() {
-        val observable1 = eventFilters.loading.observable().test()
-        val observable2 = eventFilters.loading.observable().test()
+        val observable1 = eventFilters.lifecycle.observable().test()
+        val observable2 = eventFilters.lifecycle.observable().test()
 
         publisher.onNext(
             Middleware.Record(
@@ -33,12 +33,12 @@ class EventFiltersTest {
         )
 
         observable1.assertValues(
-            TestAsyncAction to true,
-            TestAsyncAction to false
+            Event.Lifecycle(TestAsyncAction, 0, true),
+            Event.Lifecycle(TestAsyncAction, 0, false)
         )
         observable2.assertValues(
-            TestAsyncAction to true,
-            TestAsyncAction to false
+            Event.Lifecycle(TestAsyncAction, 0, true),
+            Event.Lifecycle(TestAsyncAction, 0, false)
         )
     }
 }

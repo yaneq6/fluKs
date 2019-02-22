@@ -2,14 +2,14 @@ package io.fluks
 
 import io.fluks.base.Event
 import io.fluks.core.*
-import io.fluks.feature.scheme.Scheme
-import io.fluks.feature.session.Session
 import io.fluks.core.middleware.Controller
 import io.fluks.core.middleware.Executor
 import io.fluks.core.middleware.Navigator
 import io.fluks.core.middleware.Splitter
 import io.fluks.di.provide
 import io.fluks.di.provider.singleton
+import io.fluks.feature.scheme.Scheme
+import io.fluks.feature.session.Session
 import io.reactivex.Observable
 
 object Domain {
@@ -21,7 +21,7 @@ object Domain {
         Scheme.Component {
 
         val eventsManager: EventFilters
-        val eventsLifecycle: Observable<Pair<Event, Boolean>>
+        val eventsLifecycle: Observable<Event.Lifecycle>
     }
 
 
@@ -33,7 +33,7 @@ object Domain {
         Session.Component by Session.Module(core),
         Scheme.Component by Scheme.Module(core) {
 
-        override val eventsLifecycle get() = eventsManager.loading.observable()
+        override val eventsLifecycle get() = eventsManager.lifecycle.observable()
 
         override val eventsManager by provide(singleton()) {
             EventFilters(
