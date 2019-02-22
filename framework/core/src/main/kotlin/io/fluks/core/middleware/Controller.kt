@@ -6,13 +6,16 @@ import io.fluks.core.AbstractMiddleware
 import io.fluks.core.GetTime
 import io.fluks.core.Middleware
 import io.fluks.core.StoreProvider
+import io.reactivex.Scheduler
 
 class Controller(
     private val storeProviders: List<StoreProvider>,
-    private val getTime: GetTime
+    private val getTime: GetTime,
+    scheduler: Scheduler
 ) : AbstractMiddleware<Effect>() {
 
     override val disposable = input
+        .observeOn(scheduler)
         .map(this::execute)
         .subscribe(outputSubject::onNext)!!
 

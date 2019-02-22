@@ -10,16 +10,14 @@ import io.fluks.core.Middleware
 import kotlin.reflect.KClass
 
 class Executor(
-    mainScheduler: Scheduler,
-    backgroundScheduler: Scheduler,
+    private val interactors: Map<KClass<*>, () -> (Action.Async) -> Event>,
     private val getTime: GetTime,
-    private val interactors: Map<KClass<*>, () -> (Action.Async) -> Event>
+    scheduler: Scheduler
 ) :
     AbstractMiddleware<Action.Async>() {
 
     override val disposable = input
-        .subscribeOn(mainScheduler)
-        .observeOn(backgroundScheduler)
+        .observeOn(scheduler)
         .map(this::execute)
         .subscribe(outputSubject::onNext)!!
 

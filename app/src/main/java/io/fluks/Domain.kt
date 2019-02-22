@@ -56,8 +56,7 @@ object Domain {
 
                 async = Executor(
                     getTime = getTime,
-                    mainScheduler = mainScheduler,
-                    backgroundScheduler = backgroundScheduler,
+                    scheduler = backgroundScheduler,
                     interactors = mapOf(
                         interactor { sessionInteractor }
                     )
@@ -65,6 +64,7 @@ object Domain {
 
                 stores = Controller(
                     getTime = getTime,
+                    scheduler = mainScheduler,
                     storeProviders = listOf(
                         store { sessionStore },
                         store { schemeStore },
