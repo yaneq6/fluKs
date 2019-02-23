@@ -24,7 +24,7 @@ inline fun <
     t1: KClass<T1>? = null,
     t2: KClass<T2>? = null
 ) = isRunning { event ->
-    event is T1 && event is T2
+    event is T1 || event is T2
 }
 
 inline fun <
@@ -36,7 +36,7 @@ inline fun <
     t2: KClass<T2>? = null,
     t3: KClass<T3>? = null
 ) = isRunning { event ->
-    event is T1 && event is T2 && event is T3
+    event is T1 || event is T2 || event is T3
 }
 
 inline fun <
@@ -50,7 +50,7 @@ inline fun <
     t3: KClass<T3>? = null,
     t4: KClass<T4>? = null
 ) = isRunning { event ->
-    event is T1 && event is T2 && event is T3 && event is T4
+    event is T1 || event is T2 || event is T3 || event is T4
 }
 
 inline fun <
@@ -66,5 +66,5 @@ inline fun <
     t4: KClass<T4>? = null,
     t5: KClass<T5>? = null
 ) = isRunning { event ->
-    event is T1 && event is T2 && event is T3 && event is T4 && event is T5
+    event is T1 || event is T2 || event is T3 || event is T4 || event is T5
 }
