@@ -5,14 +5,14 @@ import android.view.Menu
 import android.view.MenuInflater
 import android.view.MenuItem
 import io.fluks.R
+import io.fluks.base.*
 import io.fluks.base.android.BaseActivity
-import io.fluks.base.weak
+import io.fluks.base.android.notInvisible
 import io.fluks.databinding.SchemeBinding
-import io.fluks.base.createDi
-import io.fluks.base.dependencies
-import io.fluks.base.lazyDi
 import io.fluks.feature.raw.view.RawActivity
+import io.fluks.feature.session.Session
 import io.reactivex.disposables.CompositeDisposable
+import kotlinx.android.synthetic.main.default_toolbar.*
 import kotlinx.android.synthetic.main.scheme.*
 
 class SchemeActivity : BaseActivity<SchemeBinding, SchemeUI.Component>() {
@@ -24,16 +24,27 @@ class SchemeActivity : BaseActivity<SchemeBinding, SchemeUI.Component>() {
         )
     }
 
+
     override val disposable by lazyDi {
         CompositeDisposable(
-            super.disposable,
-            gestureObservable.onScale.subscribe { detector ->
-                plan.apply {
-                    scaleX *= detector.scaleFactor
-                    scaleY *= detector.scaleFactor
-                }
-            }
+            subscribeGestures(),
+            subscribeProgressBar()
         )
+    }
+
+    private fun subscribeGestures() = di {
+        gestureObservable.onScale.subscribe { detector ->
+            plan.apply {
+                scaleX *= detector.scaleFactor
+                scaleY *= detector.scaleFactor
+            }
+        }
+    }
+
+    private fun subscribeProgressBar() = di {
+        eventsManager.status
+            .isRunning<Session.Async>()
+            .subscribe(progress::notInvisible::set)
     }
 
     override fun onCreateSafe(savedInstanceState: Bundle?) {

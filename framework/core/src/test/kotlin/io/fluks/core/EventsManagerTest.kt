@@ -6,15 +6,15 @@ import io.fluks.base.WeakProvider
 import io.reactivex.subjects.PublishSubject
 import org.junit.Test
 
-class EventFiltersTest {
+class EventsManagerTest {
 
     private val publisher = PublishSubject.create<Middleware.Record<Event>>()
-    private val eventFilters = EventFilters(publisher)
+    private val eventFilters = EventsManager(publisher)
 
     @Test
-    fun getLoading() {
-        val observable1 = eventFilters.lifecycle.observable().test()
-        val observable2 = eventFilters.lifecycle.observable().test()
+    fun lifecycle() {
+        val observable1 = eventFilters.status.observable().test()
+        val observable2 = eventFilters.status.observable().test()
 
         publisher.onNext(
             Middleware.Record(
@@ -33,12 +33,12 @@ class EventFiltersTest {
         )
 
         observable1.assertValues(
-            Event.Lifecycle(TestAsyncAction, 0, true),
-            Event.Lifecycle(TestAsyncAction, 0, false)
+            Event.Status(TestAsyncAction, 0, true),
+            Event.Status(TestAsyncAction, 0, false)
         )
         observable2.assertValues(
-            Event.Lifecycle(TestAsyncAction, 0, true),
-            Event.Lifecycle(TestAsyncAction, 0, false)
+            Event.Status(TestAsyncAction, 0, true),
+            Event.Status(TestAsyncAction, 0, false)
         )
     }
 }

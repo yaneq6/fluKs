@@ -16,9 +16,10 @@ val LayoutContainer.context get() = containerView?.context
 val LayoutContainer.applicationContext get() = context?.applicationContext
 
 @Suppress("EXTENSION_SHADOWED_BY_MEMBER")
-inline fun <reified T> Bundle.getSerializable(key: String) : T? = getSerializable(key) as? T
+inline fun <reified T> Bundle.getSerializable(key: String): T? = getSerializable(key) as? T
+
 @Suppress("EXTENSION_SHADOWED_BY_MEMBER")
-inline fun <reified T> Intent.getSerializableExtra(name: String) : T? = getSerializableExtra(name) as? T
+inline fun <reified T> Intent.getSerializableExtra(name: String): T? = getSerializableExtra(name) as? T
 
 
 @Suppress("UNCHECKED_CAST")
@@ -37,7 +38,7 @@ fun <S, T> onPropertyChangedCallback(sender: S, onChanged: S.(T) -> Unit) =
     object : Observable.OnPropertyChangedCallback() {
         override fun onPropertyChanged(observable: Observable, propertyId: Int) {
             when (observable) {
-                is ObservableField<*> -> observable.run { onChanged.invoke(sender, value as T)  }
+                is ObservableField<*> -> observable.run { onChanged.invoke(sender, value as T) }
             }
         }
     }
@@ -55,3 +56,19 @@ var Intent.event: Event?
     }
 
 typealias GetContext = () -> Context?
+
+
+val View.visible: Boolean
+    get() = visibility == View.VISIBLE
+
+var View.notInvisible: Boolean
+    get() = visibility != View.INVISIBLE
+    set(value) {
+        visibility = if (value) View.VISIBLE else View.INVISIBLE
+    }
+
+var View.notGone: Boolean
+    get() = visibility != View.GONE
+    set(value) {
+        visibility = if (value) View.VISIBLE else View.GONE
+    }

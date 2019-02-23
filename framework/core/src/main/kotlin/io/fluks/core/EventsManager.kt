@@ -6,44 +6,48 @@ import io.reactivex.ObservableSource
 import io.reactivex.Observer
 import java.util.*
 
-class EventFilters(
+class EventsManager(
     val records: Observable<Middleware.Record<Event>>
 ) {
-    val lifecycle: Observable<Event.Lifecycle> = records.compose(::EventLifecycleSource)
+    val status: Observable<Event.Status> = records.compose(::EventStatusSource)
 
     private val normalized = records
         .filter { it.event !is Event.More }
         .distinctUntilChanged()!!
 
     val events = normalized.map { it.event }!!
+
+    interface Component {
+        val eventsManager: EventsManager
+    }
 }
 
-private class EventLifecycleSource(
+private class EventStatusSource(
     input: Observable<Middleware.Record<Event>>
-) : ObservableSource<Event.Lifecycle> {
+) : ObservableSource<Event.Status> {
 
     private val events = Vector<Pair<Event, Long>>()
 
     private val output = input
         .map { it.handle() }
-        .filter { it != Event.Lifecycle.Empty }
+        .filter { it != Event.Status.Empty }
         .share()!!
 
-    override fun subscribe(observer: Observer<in Event.Lifecycle>) {
+    override fun subscribe(observer: Observer<in Event.Status>) {
         output.subscribe(observer)
     }
 
-    private fun Middleware.Record<Event>.handle(): Event.Lifecycle = when {
+    private fun Middleware.Record<Event>.handle(): Event.Status = when {
         isStarting && onStart(rootEvent to startedAt) -> true
         isFinished && onFinish(rootEvent to startedAt) -> false
         else -> null
     }?.let { status ->
-        Event.Lifecycle(
+        Event.Status(
             event = rootEvent,
             isRunning = status,
             startedAt = startedAt
         )
-    } ?: Event.Lifecycle.Empty
+    } ?: Event.Status.Empty
 
     private fun onStart(event: Pair<Event, Long>) = events.add(event)
 

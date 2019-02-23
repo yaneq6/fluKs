@@ -10,6 +10,7 @@ import io.fluks.base.Action
 import io.fluks.base.android.BaseActivity
 import io.fluks.base.android.GetContext
 import io.fluks.base.UI
+import io.fluks.core.EventsManager
 import io.fluks.databinding.SchemeBinding
 import io.fluks.di.provide
 import io.fluks.di.provider.singleton
@@ -23,7 +24,8 @@ object SchemeUI {
 
     interface Component :
         UI.Component<SchemeBinding>,
-        BaseActivity.Component {
+        BaseActivity.Component,
+        EventsManager.Component {
 
         val gestureObservable: GestureObservable
         val touchListener: View.OnTouchListener

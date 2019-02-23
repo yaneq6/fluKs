@@ -8,6 +8,7 @@ import io.fluks.R
 import io.fluks.base.Action
 import io.fluks.base.UI
 import io.fluks.base.android.BaseActivity
+import io.fluks.core.EventsManager
 import io.fluks.databinding.LoginBinding
 import io.fluks.di.provide
 import io.fluks.di.provider.weakSingleton
@@ -16,7 +17,8 @@ object LoginUI {
 
     interface Component :
         UI.Component<LoginBinding>,
-        BaseActivity.Component
+        BaseActivity.Component,
+        EventsManager.Component
 
     class Module(
         app: App.Component

@@ -1,6 +1,5 @@
 package io.fluks
 
-import io.fluks.base.Event
 import io.fluks.core.*
 import io.fluks.core.middleware.Controller
 import io.fluks.core.middleware.Executor
@@ -10,20 +9,15 @@ import io.fluks.di.provide
 import io.fluks.di.provider.singleton
 import io.fluks.feature.scheme.Scheme
 import io.fluks.feature.session.Session
-import io.reactivex.Observable
 
 object Domain {
 
     interface Component :
         Core.Component,
         Dispatcher.Component,
+        EventsManager.Component,
         Session.Component,
-        Scheme.Component {
-
-        val eventsManager: EventFilters
-        val eventsLifecycle: Observable<Event.Lifecycle>
-    }
-
+        Scheme.Component
 
     class Module(
         core: Core.Component
@@ -33,10 +27,8 @@ object Domain {
         Session.Component by Session.Module(core),
         Scheme.Component by Scheme.Module(core) {
 
-        override val eventsLifecycle get() = eventsManager.lifecycle
-
         override val eventsManager by provide(singleton()) {
-            EventFilters(
+            EventsManager(
                 records = dispatch.output
             )
         }

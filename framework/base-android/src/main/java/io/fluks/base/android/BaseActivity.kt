@@ -8,10 +8,9 @@ import android.os.Bundle
 import android.support.v7.app.AppCompatActivity
 import android.support.v7.widget.Toolbar
 import android.view.View
-import android.view.ViewGroup
-import android.widget.ProgressBar
 import io.fluks.base.*
 import io.fluks.base.android.databinding.DataBindingDelegate
+import io.reactivex.disposables.Disposable
 import timber.log.Timber
 import java.lang.ref.WeakReference
 
@@ -33,20 +32,8 @@ abstract class BaseActivity<DataBinding, Component> :
     val binding by lazyDi { setBindingView(layoutId) }
 
     val toolbar by lazy { findViewById<Toolbar?>(R.id.toolbar) }
-    private val progress by lazy { findViewById<ProgressBar?>(R.id.progress) }
-    private val progressLayout by lazy { findViewById<ViewGroup?>(R.id.progressBarLayout) }
-    private val progressBarController by lazy {
-        if (toolbar != null && progress != null) {
-            ProgressBarController(progressLayout!!, progress!!)
-        } else {
-            null
-        }
-    }
-    open val disposable by lazyDi {
-        eventsLifecycle.subscribe {
-            setProgressVisibility(it.isRunning)
-        }!!
-    }
+
+    open val disposable: Disposable? = null
 
     final override fun onCreate(savedInstanceState: Bundle?): Unit = this.measure("onCreate") {
         Timber.d("onCreate started")
@@ -63,12 +50,7 @@ abstract class BaseActivity<DataBinding, Component> :
         onCreateSafe(savedInstanceState)
     }
 
-    open fun setProgressVisibility(visible: Boolean) {
-        progressBarController?.setVisibility(visible)
-    }
-
-    protected open fun onCreateSafe(savedInstanceState: Bundle?) {/*no-op*/
-    }
+    protected open fun onCreateSafe(savedInstanceState: Bundle?) {}
 
     override fun onResume() {
         dispatch(Platform::OnTop)
@@ -78,7 +60,7 @@ abstract class BaseActivity<DataBinding, Component> :
     override fun onNewIntent(intent: Intent): Unit = dispatch(intent.event)
 
     override fun onDestroy() {
-        disposable.dispose()
+        disposable?.dispose()
         binding.unbind()
         di {
             disposable.dispose()
@@ -94,19 +76,5 @@ abstract class BaseActivity<DataBinding, Component> :
 
     interface Component {
         fun Activity.initDebugDrawer()
-    }
-}
-
-class ProgressBarController(
-    private val anchor: ViewGroup,
-    private val progressBar: ProgressBar
-) {
-
-    fun setVisibility(visible: Boolean) = anchor.post {
-        if (visible) {
-            progressBar.visibility = View.VISIBLE
-        } else {
-            progressBar.visibility = View.INVISIBLE
-        }
     }
 }

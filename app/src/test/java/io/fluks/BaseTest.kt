@@ -1,9 +1,6 @@
 package io.fluks
 
-import io.fluks.base.Depends
-import io.fluks.base.Event
-import io.fluks.base.WeakProvider
-import io.fluks.base.createDi
+import io.fluks.base.*
 import io.fluks.core.Middleware
 import io.fluks.di.Dependencies
 import io.mockk.mockk
@@ -40,12 +37,11 @@ fun <T, U : BaseTestConsumer<T, U>> BaseTestConsumer<T, U>.assertLast(
 fun expectedRecord(
     context: Any,
     vararg events: Event
-) = WeakProvider(context).let { weakContext ->
-    val reversed = events.reversed()
+) = events.reversed().let { reversed ->
     var timestamp = 0L
     Middleware.Record(
         event = reversed.first(),
-        context = weakContext,
+        context = context.weak(),
         timestamp = timestamp++,
         predecessors = reversed.drop(1).map {
             it to timestamp++
